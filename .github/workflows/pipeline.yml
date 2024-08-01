@@ -1,0 +1,16 @@
+name: Build and Push workflow
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: Noves-Inc/devops/.github/workflows/build-push-next.yaml@master
+    with:
+      build-arg-file: ".env"
+      build-arg-env: "true"
+    secrets: inherit
