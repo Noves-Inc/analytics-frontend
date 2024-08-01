@@ -39,7 +39,7 @@ async function fetchData() {
     });
 
     // as records
-    const data = (await response.json()).records.map((record: any) => {
+    const data = (await response.json()).records?.map((record: any) => {
       return {
         id: record.id,
         get: (field: string) => record.fields[field],
@@ -48,7 +48,7 @@ async function fetchData() {
 
     // filter out records that are not enabled or not in the branches to include and map them to the Notification type
     const records: Notification[] = data
-      .filter((record) => {
+      ?.filter((record) => {
         return (
           BranchesToInclude.includes(record.get("Branch") as string) &&
           record.get("Status") === "Enabled"
