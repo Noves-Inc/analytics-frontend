@@ -87,7 +87,7 @@ const EmbedContainer = ({
             <div className="capitalize">{aggregation}</div>
           </div>
         </div>
-        <Link
+        {/*         <Link
           href={url}
           target="_blank"
           rel="noopener"
@@ -123,7 +123,7 @@ const EmbedContainer = ({
               icon="feather:chevron-right"
             />
           </div>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

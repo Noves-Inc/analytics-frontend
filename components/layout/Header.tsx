@@ -25,7 +25,7 @@ export default function Header() {
             <Link href="/" className="">
               <div className="h-[36px] w-[154.05px] relative ">
                 <Image
-                  src="/logo_full.png"
+                  src="/icons/chain-logo-dark.svg"
                   alt="Forest"
                   className="hidden dark:block"
                   fill={true}
@@ -33,7 +33,7 @@ export default function Header() {
                   sizes="33vw"
                 />
                 <Image
-                  src="/logo_full_light.png"
+                  src="/icons/chain-logo-dark.svg"
                   alt="Forest"
                   className="block dark:hidden"
                   fill={true}
@@ -58,9 +58,9 @@ export default function Header() {
         </div>
       </div>
       {process.env.NEXT_PUBLIC_VERCEL_ENV !== undefined &&
-        ["development", "preview"].includes(
-          process.env.NEXT_PUBLIC_VERCEL_ENV,
-        ) ? (
+      ["development", "preview"].includes(
+        process.env.NEXT_PUBLIC_VERCEL_ENV,
+      ) ? (
         <> </>
       ) : (
         <>{/* <SupportUsBanner /> */}</>

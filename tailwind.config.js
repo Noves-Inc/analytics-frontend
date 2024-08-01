@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -36,6 +37,7 @@ module.exports = {
         "3xs": "340px",
       },
       colors: {
+        brandColor: "var(--color-brand)",
         ethereum: {
           DEFAULT: "#099FD4",
           50: "#9AE1FB",
@@ -228,5 +230,12 @@ module.exports = {
 
       addUtilities(newUtilities, ["responsive", "hover"]);
     },
+    plugin(function ({ addBase }) {
+      addBase({
+        ":root": {
+          "--color-brand": process.env.NEXT_PUBLIC_CHAIN_BRAND_COLOR ?? "white",
+        },
+      });
+    }),
   ],
 };

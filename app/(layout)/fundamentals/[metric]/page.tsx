@@ -55,9 +55,12 @@ const Fundamentals = ({ params }: { params: any }) => {
 };
 
 const FundamentalsContent = ({ params }: { params: any }) => {
+  const CHAIN = process.env.NEXT_PUBLIC_CHAIN;
   const master = params.master;
   const metricData = params.metricData;
   const [errorCode, setErrorCode] = useState<number | null>(null);
+  const comparisonChains =
+    process.env.NEXT_PUBLIC_COMPARISON_CHAINS?.split(", ");
 
   const chainKeys = useMemo(() => {
     if (!metricData)
@@ -82,7 +85,7 @@ const FundamentalsContent = ({ params }: { params: any }) => {
 
   const [selectedChains, setSelectedChains] = useSessionStorage(
     "fundamentalsChains",
-    [...Get_DefaultChainSelectionKeys(master), "ethereum"],
+    [...Get_DefaultChainSelectionKeys(master), CHAIN ? CHAIN : "ethereum"],
   );
 
   const [selectedScale, setSelectedScale] = useSessionStorage(
@@ -133,7 +136,13 @@ const FundamentalsContent = ({ params }: { params: any }) => {
 
   return (
     <>
-      <div className="flex flex-col-reverse xl:flex-row space-x-0 xl:space-x-2">
+      <div
+        className={`flex ${
+          comparisonChains?.length
+            ? "flex-col-reverse"
+            : "flex-col w-full px-12 py-2"
+        } space-x-0 xl:space-x-2`}
+      >
         <ComparisonChart
           data={Object.keys(metricData.data.chains)
             .filter((chain) => selectedChains.includes(chain))
@@ -164,6 +173,7 @@ const FundamentalsContent = ({ params }: { params: any }) => {
             params.metric === "transaction-costs" ? "absolute" : selectedScale
           }
           setSelectedScale={setSelectedScale}
+          is_embed={!comparisonChains || !comparisonChains.length}
         >
           <MetricsTable
             data={metricData.data.chains}

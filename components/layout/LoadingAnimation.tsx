@@ -38,7 +38,7 @@ export default function LoadingAnimation() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
+      {/*       <path
         d="M51.5588 54.6538C51.2319 50.0931 52.474 45.9055 55.1389 41.8447C56.9232 39.1452 59.4535 36.2304 62.2452 33.0195C69.4477 24.7249 78.3691 14.4576 80.5533 0.852539C85.3024 11.2813 82.9989 21.4217 77.7423 30.7468C75.3773 34.9383 72.7586 37.9493 70.2591 40.8218C67.3173 44.202 64.5448 47.3898 62.5529 52.0774C61.4569 54.6269 60.834 57.0687 60.5417 59.4567L51.5588 54.6538Z"
         fill="#CDD8D3"
       />
@@ -72,6 +72,24 @@ export default function LoadingAnimation() {
       />
       <path
         d="M2.76953 123.669C7.96469 138.358 20.6776 155.613 23.381 158.135C32.7177 166.93 62.8004 174.171 86.492 174.171V149.41C45.4229 149.41 13.3598 136.109 2.76953 123.669Z"
+        fill="#CDD8D3"
+      /> */}
+      <path
+        d="M0 73.72v23.84h37.41V82.35C25.79 76.72 12.91 73.72 0 73.72Z"
+        fill="#CDD8D3"
+      />
+      {/*       <path d="M181.72.24h20.12l33.49 46.26c5.41 7.36 11.56 17.87 11.56 17.87V.24h21.03v97.32h-20.28L215.2 53.1c-6.46-8.71-12.47-19.07-12.47-19.07v63.53H181.7V.24ZM285.95 60.01c0-21.78 17.72-39.05 40.1-39.05s40.25 17.27 40.25 39.05-17.72 39.05-40.25 39.05-40.1-17.27-40.1-39.05Zm59.78 0c0-11.71-8.41-20.43-19.68-20.43s-19.67 8.71-19.67 20.43 8.41 20.43 19.67 20.43 19.68-8.56 19.68-20.43ZM373.51 22.47h20.12l13.97 38.6c2.85 7.81 5.26 15.62 5.56 16.67.15-1.05 2.7-9.16 5.41-16.52l13.97-38.75h19.97l-29.59 75.24H403.1l-29.59-75.24ZM459.72 60.01c0-21.63 16.82-39.05 38.9-39.05 20.43 0 36.5 17.42 36.5 38.75 0 3.6-.45 7.21-.45 7.21h-54.52c2.4 10.36 10.96 15.32 20.88 15.32 7.21 0 14.72-2.1 20.28-5.86l7.51 14.42c-8.41 5.56-18.17 8.26-27.94 8.26-21.93 0-41.15-14.27-41.15-39.05Zm56.47-6.46c-1.5-9.46-9.01-15.77-18.17-15.77s-16.22 6.31-18.17 15.77h36.35ZM547.43 88.85l7.21-15.47c5.11 3.91 12.17 7.96 23.43 7.96 4.65 0 12.31-1.8 12.31-6.31s-6.46-5.56-12.92-7.36c-14.87-3.91-27.03-8.86-27.03-23.28 0-15.32 15.02-23.43 29.14-23.43 12.31 0 20.12 3 27.94 7.51l-6.76 15.02c-7.36-3.6-14.27-5.26-20.88-5.26-4.65 0-9.01 2.1-9.01 5.26 0 4.21 6.31 5.56 13.22 7.06 12.77 3 26.73 8.56 26.73 23.88 0 18.47-18.77 24.63-32.74 24.63-16.07 0-26.43-6.31-30.64-10.21Z" /> */}
+      <path
+        d="M134.15 73.66v23.9h-14.66c-15.7 0-31.18-3.74-45.15-10.92l-29.19-15A98.9 98.9 0 0 0 0 60.72V36.83h5.78c15.7 0 31.17 3.74 45.13 10.91l29.21 15a98.808 98.808 0 0 0 45.13 10.91h8.89Z"
+        fill="#CDD8D3"
+      />
+
+      <path
+        d="M134.15 36.83v23.89h-5.8c-15.7 0-31.17-3.74-45.14-10.92l-29.2-15A98.828 98.828 0 0 0 8.87 23.88H0V0h14.65c15.7 0 31.17 3.74 45.13 10.91L89 25.92a98.777 98.777 0 0 0 45.13 10.91h.01Z"
+        fill="#CDD8D3"
+      />
+      <path
+        d="M134.15 23.82V0H96.74v15.2c11.62 5.62 24.49 8.62 37.4 8.62h.01Z"
         fill="#CDD8D3"
       />
     </svg>
@@ -109,57 +127,24 @@ export default function LoadingAnimation() {
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
         animation-name: FadeInOut;
-        animation-duration: 1.666s;
+        animation-duration: 1.5s;
         animation-iteration-count: infinite;
       }
-      /*
+      
       .animate-smoke:nth-child(1) {
-        animation-delay: 0.100s;
+        animation-delay: 0.700s;
       }
       .animate-smoke:nth-child(2) {
-        animation-delay: 0.100s;
+        animation-delay: 0.500s;
       }
       .animate-smoke:nth-child(3) {
-        animation-delay: 0.100s;
-      }
-      */
-      .animate-smoke:nth-child(4) {
-        animation-delay: 0.150s;
-      }
-      .animate-smoke:nth-child(5) {
         animation-delay: 0.300s;
       }
-      .animate-smoke:nth-child(6) {
-        animation-delay: 0.450s;
-      }
-      .animate-smoke:nth-child(7) {
-        animation-delay: 0.600s;
-      }
-      .animate-smoke:nth-child(8) {
-        animation-delay: 0.750s;
-      }
-      .animate-smoke:nth-child(9) {
-        animation-delay: 0.900s;
+      
+      .animate-smoke:nth-child(4) {
+        animation-delay: 0.100s;
       }
 
-      .animate-pie {
-        fill-opacity: 0;
-        animation-timing-function: ease-in;
-        animation-fill-mode: forwards;
-        animation-name: FadeIn;
-        animation-duration: 0.777s;
-        animation-iteration-count: 1;
-      }
-
-      .animate-pie:nth-child(1) {
-        animation-delay: 0.4;
-      }
-      .animate-pie:nth-child(2) {
-        animation-delay: 0.4;
-      }
-      .animate-pie:nth-child(3) {
-        animation-delay: 0.4;
-      }
 
       @keyframes FadeInOut {
         0% {
@@ -197,7 +182,7 @@ export default function LoadingAnimation() {
               key={i}
               d={pathProps.d}
               fill={fillColor}
-              className={i > 2 ? "animate-smoke" : "animate-pie"}
+              className="animate-smoke"
             />
           );
         })}

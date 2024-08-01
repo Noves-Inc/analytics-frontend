@@ -3,7 +3,7 @@ type Props = {
 };
 export default function ChartWatermark({ className = "" }: Props) {
   return (
-    <svg
+    /*   <svg
       viewBox="0 0 226 46"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -93,6 +93,7 @@ export default function ChartWatermark({ className = "" }: Props) {
         d="M193.999 38.7957V36.1035H196.055V38.7957H193.999Z"
         fill="currentColor"
       />
-    </svg>
+    </svg> */
+    null
   );
 }

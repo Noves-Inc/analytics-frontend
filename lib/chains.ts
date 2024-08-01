@@ -49,6 +49,29 @@ export const AllChains: Chain[] = [
     darkTextOnBackground: true,
   },
   {
+    label: "Rari",
+    icon: "/icons/Base.png",
+    key: "rari",
+    urlKey: "rari",
+    chainType: "L2",
+    ecosystem: ["op-stack", "op-super", "all-chains"],
+    description:
+      "Base is an fully EVM compatible optimistic rollup built on the OP Stack. It is incubated inside of Coinbase. Public mainnet launch was on August 9th 2023.",
+    border: {
+      light: ["border-[#D235D7]", "border-[#D235D7]"],
+      dark: ["border-[#C5FFFD]", "border-[#C5FFFD]"],
+    },
+    colors: {
+      light: ["#D235D7", "#D235D7"], // text color
+      dark: ["#C5FFFD", "#C5FFFD"], // text color
+    }, // yellow-orange
+    backgrounds: {
+      light: ["bg-[#D235D7]", "bg-[#D235D7]"],
+      dark: ["bg-[#C5FFFD]", "bg-[#C5FFFD]"],
+    },
+    darkTextOnBackground: false,
+  },
+  {
     label: "Base",
     icon: "/icons/Base.png",
     key: "base",
@@ -588,10 +611,17 @@ export const Get_SupportedChainKeys = (
   data?: MasterResponse,
   additionalKeys?: string[],
 ) => {
+  const comparisonChains =
+    process.env.NEXT_PUBLIC_COMPARISON_CHAINS?.split(", ");
+
   if (!data) return [];
   if (IS_DEVELOPMENT || IS_PREVIEW) {
     let keys = Object.keys(data.chains)
-      .filter((key) => ["DEV", "PROD"].includes(data.chains[key].deployment))
+      .filter(
+        (key) =>
+          ["DEV", "PROD"].includes(data.chains[key].deployment) &&
+          comparisonChains?.includes(data.chains[key].name_short),
+      )
       .map((key) => key);
 
     if (additionalKeys) {
@@ -613,6 +643,7 @@ export const Get_SupportedChainKeys = (
 };
 
 export const Get_DefaultChainSelectionKeys = (master: MasterResponse) => {
+  return [process.env.NEXT_PUBLIC_CHAIN];
   const supportedChainKeys = Get_SupportedChainKeys(master);
   return master.default_chain_selection.filter((key) =>
     supportedChainKeys.includes(key),

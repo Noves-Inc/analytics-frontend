@@ -1,0 +1,9 @@
+dev:
+  - name: rari
+    replicas: 1
+staging:
+  - name: rari
+    replicas: 1
+prod:
+  - name: rari
+    replicas: 1

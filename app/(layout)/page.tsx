@@ -41,7 +41,7 @@ export default async function Page() {
         <div className="flex items-center gap-x-[8px] py-[10px] md:py-0">
           <Icon
             icon="gtp:fundamentals"
-            className="w-[30px] h-[30px] md:w-9 md:h-9"
+            className="w-[30px] h-[30px] md:w-9 md:h-9 text-brandColor"
           />
           <Heading
             id="layer-2-traction-title"
@@ -65,7 +65,7 @@ export default async function Page() {
         <div className="flex items-center gap-x-[8px] py-[10px] md:py-0">
           <Icon
             icon="gtp:gtp-pie"
-            className="w-[30px] h-[30px] md:w-9 md:h-9"
+            className="w-[30px] h-[30px] md:w-9 md:h-9 text-brandColor"
           />
           <Heading className="text-[20px] md:text-[30px] leading-[1.2] font-semibold">
             Layer 2 User Base
@@ -81,7 +81,7 @@ export default async function Page() {
         <div className="flex items-center gap-x-[8px] py-[10px] md:py-0">
           <Icon
             icon="gtp:package"
-            className="w-[30px] h-[30px] md:w-9 md:h-9"
+            className="w-[30px] h-[30px] md:w-9 md:h-9 text-brandColor"
           />
           <Heading
             id="layer-2-traction-title"
@@ -147,7 +147,7 @@ export default async function Page() {
         <div className="flex mt-[25px] md:mt-[60px] mb-[25px] md:mb-[30px] ml-1.5 md:ml-0 space-x-2 items-center">
           <Icon
             icon="gtp:gtp-faq"
-            className="w-[30px] h-[30px] md:w-9 md:h-9"
+            className="w-[30px] h-[30px] md:w-9 md:h-9 text-brandColor"
           />
           <Heading
             id="layer-2-traction-title"

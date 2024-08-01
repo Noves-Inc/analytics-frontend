@@ -3,12 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import SidebarMenuGroup from "./SidebarMenuGroup";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  navigationItems,
-  contributorsItem,
-  apiDocsItem,
-  // rpgfItem,
-} from "@/lib/navigation";
+import { navigationItems } from "@/lib/navigation";
 import { useUIContext } from "@/contexts/UIContext";
 import { Icon } from "@iconify/react";
 import EthUsdSwitch from "./EthUsdSwitch";
@@ -96,10 +91,10 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
             }`}
           >
             <div className="fixed inset-0 p-[20px] z-[999] flex flex-col justify-items-start select-none overflow-hidden">
-              <div className="flex justify-between space-x-[20px] items-end w-full pointer-events-auto">
-                <Link href="/" className="h-[36px] w-[34px] relative">
+              <div className="flex justify-between space-x-[20px] items-center w-full pointer-events-auto">
+                <Link href="/" className="w-24 h-24 relative">
                   <Image
-                    src="/logo_pie_only.png"
+                    src="/icons/chain-logo-dark.svg"
                     alt="Forest"
                     className="antialiased"
                     fill={true}
@@ -199,20 +194,10 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                       sidebarOpen={isMobileSidebarOpen}
                     />
                   ))}
-                  <SidebarMenuGroup
-                    key={apiDocsItem.name + "_item"}
-                    item={apiDocsItem}
-                    sidebarOpen={isMobileSidebarOpen}
-                  />
-                  <SidebarMenuGroup
-                    key={contributorsItem.name + "_item"}
-                    item={contributorsItem}
-                    sidebarOpen={isMobileSidebarOpen}
-                  />
                 </div>
 
                 <div className="flex flex-col justify-end pt-3 pb-6 relative mb-[17px] pointer-events-auto">
-                  <div className="text-[0.7rem] flex justify-evenly w-full gap-x-12 text-inherit leading-[1] px-2  mb-[17px]">
+                  {/*                   <div className="text-[0.7rem] flex justify-evenly w-full gap-x-12 text-inherit leading-[1] px-2  mb-[17px]">
                     <Link href="/privacy-policy">Privacy Policy</Link>
                     <Link href="/imprint">Imprint</Link>
                     <Link
@@ -228,7 +213,7 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                     >
                       Feedback
                     </Link>
-                  </div>
+                  </div> */}
                   <div className="items-end justify-center z-[999] flex space-x-[15px] mt-[2px] mb-[17px]">
                     <EthUsdSwitch isMobile />
                   </div>
@@ -267,19 +252,8 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
             sidebarOpen={isSidebarOpen}
           />
         ))}
-        <SidebarMenuGroup
-          key={apiDocsItem.name + "_item"}
-          item={apiDocsItem}
-          sidebarOpen={isSidebarOpen}
-        />
-        <SidebarMenuGroup
-          key={contributorsItem.name + "_item"}
-          item={contributorsItem}
-          sidebarOpen={isSidebarOpen}
-        />
       </div>
       <div className="flex flex-col justify-end pt-6 pb-3 relative"></div>
-      <div className="mt-[80px"></div>
     </motion.div>
   );
 }

@@ -74,24 +74,24 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.growthepie.xyz"),
+  metadataBase: new URL("https://www.noves.fi/"),
   title: {
-    template: "%s - growthepie",
-    default: "Growing Ethereum’s Ecosystem Together - growthepie",
+    template: "%s - Noves",
+    default: "Better Blockchain Data - Noves",
   },
   description:
-    "At growthepie, our mission is to provide comprehensive and accurate analytics of layer 2 solutions for the Ethereum ecosystem, acting as a trusted data aggregator from reliable sources such as L2Beat and DefiLlama, while also developing our own metrics.",
+    "Noves transforms how you work with smart contract blockchains. Save time, eliminate headaches, and deliver advanced capabilities like never before",
   openGraph: {
-    title: "growthepie",
-    description: "Growing Ethereum’s Ecosystem Together",
-    url: "https://www.growthepie.xyz",
+    title: "Noves",
+    description: "Better Blockchain Data",
+    url: "https://www.noves.fi/",
 
     images: [
       {
-        url: "https://www.growthepie.xyz/gtp_og.png",
+        url: "https://cdn.prod.website-files.com/649a9864d3a044a31be530c4/649ef94e94a71ff96ae8a1dc_logo_balck.svg",
         width: 1200,
         height: 627,
-        alt: "growthepie.xyz",
+        alt: "noves.fi",
       },
     ],
     locale: "en_US",
@@ -99,13 +99,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "growthepie.xyz",
-    description: "Growing Ethereum’s Ecosystem Together",
-    site: "@growthepie_eth",
+    title: "noves.fi",
+    description: "Better Blockhain Data",
+    site: "@noves_fi",
     siteId: "1636391104689094656",
-    creator: "@growthepie_eth",
+    creator: "@noves_fi",
     creatorId: "1636391104689094656",
-    images: ["https://www.growthepie.xyz/gtp_og.png"],
+    images: [
+      "https://cdn.prod.website-files.com/649a9864d3a044a31be530c4/649ef94e94a71ff96ae8a1dc_logo_balck.svg",
+    ],
   },
   robots: {
     index: true,
@@ -127,21 +129,21 @@ const raleway = Raleway({
   subsets: ["latin"],
   variable: "--font-raleway",
   display: "swap",
-  adjustFontFallback: false
+  adjustFontFallback: false,
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  adjustFontFallback: false
+  adjustFontFallback: false,
 });
 
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-roboto-mono",
   display: "swap",
-  adjustFontFallback: false
+  adjustFontFallback: false,
 });
 
 export default function RootLayout({
@@ -188,20 +190,20 @@ export default function RootLayout({
                     </div>
                   </div>
                   <Header />
-                  <main className="flex-1 w-full mx-auto z-10 pb-[165px] min-h-[calc(100vh-218px-56px)] md:min-h-[calc(100vh-207px-80px)]">
+                  <main className="flex-1 w-full mx-auto z-10 pb-24 min-h-[calc(100vh-218px-56px)] md:min-h-[calc(100vh-207px-80px)]">
                     {children}
                   </main>
                   <BottomBanner />
                 </div>
               </div>
-              <div className="z-50 flex fixed bottom-[20px] w-full max-w-[1680px] justify-end pointer-events-none">
+              {/*               <div className="z-50 flex fixed bottom-[20px] w-full max-w-[1680px] justify-end pointer-events-none">
                 <div className="pr-[20px] md:pr-[50px] pointer-events-auto">
                   <div className="relative flex gap-x-[15px] z-50 p-[5px] bg-forest-500 dark:bg-[#5A6462] rounded-full shadow-[0px_0px_50px_0px_#00000033] dark:shadow-[0px_0px_50px_0px_#000000]">
-                    {/* <Details /> */}
+                    {/* <Details /> 
                     <Share />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <DeveloperTools />

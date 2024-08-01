@@ -190,7 +190,10 @@ export default function SidebarMenuGroup({
               <div className="w-6 mx-0">
                 <div className="w-6 mx-auto">
                   {!item.name.includes("RPGF3 Tracker") ? (
-                    <Icon icon={item.icon} className="h-7 w-7 p-0.5 mx-auto" />
+                    <Icon
+                      icon={item.icon}
+                      className="h-7 w-7 p-0.5 mx-auto text-brandColor"
+                    />
                   ) : (
                     <Icon
                       icon={item.icon}
@@ -251,7 +254,10 @@ export default function SidebarMenuGroup({
               <div className="w-6 mx-0">
                 <div className="w-6 mx-auto">
                   {!item.name.includes("RPGF3 Tracker") ? (
-                    <Icon icon={item.icon} className="h-7 w-7 p-0.5 mx-auto" />
+                    <Icon
+                      icon={item.icon}
+                      className="h-7 w-7 p-0.5 mx-auto text-brandColor"
+                    />
                   ) : (
                     <Icon
                       icon={item.icon}
@@ -454,7 +460,10 @@ export default function SidebarMenuGroup({
             <div className="w-6 mx-0">
               <div className="w-6 mx-auto">
                 {!item.name.includes("RPGF3 Tracker") ? (
-                  <Icon icon={item.icon} className="h-7 w-7 p-0.5 mx-auto" />
+                  <Icon
+                    icon={item.icon}
+                    className="h-7 w-7 p-0.5 mx-auto text-brandColor"
+                  />
                 ) : (
                   <Icon
                     icon={item.icon}

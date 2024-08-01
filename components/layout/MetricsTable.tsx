@@ -38,6 +38,9 @@ const MetricsTable = ({
   setShowEthereumMainnet: (show: boolean) => void;
   timeIntervalKey: string;
 }) => {
+  const CHAIN = process.env.NEXT_PUBLIC_CHAIN;
+  const comparisonChains =
+    process.env.NEXT_PUBLIC_COMPARISON_CHAINS?.split(", ");
   const [showUsd, setShowUsd] = useLocalStorage("showUsd", true);
 
   const [maxVal, setMaxVal] = useState<number | null>(null);
@@ -46,11 +49,12 @@ const MetricsTable = ({
     "lastSelectedChains",
     AllChains.filter(
       (chain) =>
-        (chain.ecosystem.includes("all-chains") &&
+        ((chain.ecosystem.includes("all-chains") &&
           ["arbitrum", "optimism", "base", "linea", "zksync_era"].includes(
             chain.key,
           )) ||
-        chain.key === "ethereum",
+          chain.key === "ethereum") &&
+        comparisonChains?.includes(chain.label),
     ).map((chain) => chain.key),
   );
 
@@ -73,17 +77,17 @@ const MetricsTable = ({
   const onChainSelectToggle = useCallback(() => {
     // if all chains are selected, unselect all
     if (chainSelectToggleState === "all") {
-      setSelectedChains(["ethereum"]);
+      setSelectedChains([CHAIN, "ethereum"]);
     }
 
     // if no chains are selected, select last selected chains
     if (chainSelectToggleState === "none") {
-      setSelectedChains(lastSelectedChains);
+      setSelectedChains([CHAIN]);
     }
 
     // if some chains are selected, select all chains
     if (chainSelectToggleState === "normal") {
-      setSelectedChains(chainKeys);
+      setSelectedChains([CHAIN, ...chainKeys]);
     }
   }, [
     chainSelectToggleState,

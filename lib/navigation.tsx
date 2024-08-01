@@ -67,11 +67,6 @@ export const navigationCategories = {
     icon: "feather:sun",
     group: "trackers",
   },
-  gtpmetrics: {
-    label: "More In-Depth Metrics",
-    icon: "gtp:gtp-pie-monochrome",
-    group: "trackers",
-  },
 };
 
 export const navigationItems: NavigationItem[] = [
@@ -404,6 +399,17 @@ export const navigationItems: NavigationItem[] = [
         urlKey: "ethereum",
       },
       {
+        label: "Rari",
+        page: {
+          description:
+            "Ethereum serves as the base layer (Layer 1 or L1) for various Layer 2 (L2) scaling solutions, which aim to improve transaction throughput and reduce costs. As the foundational layer, Ethereum anchors these L2 networks, ensuring they inherit its robust security and trustlessness.",
+        },
+        icon: "gtp:rari-logo-monochrome",
+        key: "rari",
+        rootKey: "chainsRari",
+        urlKey: "rari",
+      },
+      {
         label: "Base",
         page: {
           description:
@@ -615,78 +621,7 @@ export const navigationItems: NavigationItem[] = [
       },
     ],
   },
-
-  {
-    name: "Knowledge",
-    label: "Knowledge",
-    icon: "gtp:book-open",
-    options: [],
-    href: "https://docs.growthepie.xyz/",
-  },
-  {
-    name: "Trackers",
-    label: "Trackers",
-    icon: "gtp:tracker",
-    options: [
-      {
-        label: "fees.growthepie.xyz",
-        icon: "gtp:gtp-pie",
-        category: "gtpmetrics",
-        key: "feesxyz",
-        rootKey: "feesxyz",
-        urlKey: "feesxyz",
-        excludeFromSitemap: true,
-      },
-      {
-        label: "OP RetroPGF 3",
-        icon: "gtp:optimism-logo-monochrome",
-        category: "public-goods-funding",
-        key: "rpgf3",
-        rootKey: "rpgf3",
-        urlKey: "optimism-retropgf-3",
-      },
-      {
-        label: "Octant",
-        icon: "",
-        category: "public-goods-funding",
-        key: "octant",
-        rootKey: "octant",
-        urlKey: "octant",
-        showNew: true,
-      },
-      {
-        label: "Glo Dollar",
-        icon: "",
-        category: "public-goods-funding",
-        key: "glodollar",
-        rootKey: "glodollar",
-        urlKey: "glodollar",
-      },
-    ],
-  },
-
-  // // put navigation items that we want to hide in production here
-  // ...(IS_PREVIEW
-  //   ? [
-  {
-    name: "Blog",
-    label: "Blog",
-    icon: "gtp:blog",
-    options: [],
-    href: "https://mirror.xyz/blog.growthepie.eth",
-  },
-
-  //   ]
-  // : []),
 ];
-
-export const contributorsItem: NavigationItem = {
-  name: "Contributors",
-  label: "Contributors",
-  icon: "gtp:compass",
-  options: [],
-  href: "/contributors",
-};
 
 export const getFundamentalsByKey = (() => {
   const fundamentalsByKey = {};
@@ -705,11 +640,3 @@ export const getFundamentalsByKey = (() => {
 
   return fundamentalsByKey;
 })();
-
-export const apiDocsItem: NavigationItem = {
-  name: "API Documentation",
-  label: "API Documentation",
-  icon: "gtp:file-text",
-  options: [],
-  href: "https://docs.growthepie.xyz/api",
-};
