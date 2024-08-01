@@ -39,9 +39,6 @@ export async function GET(request: Request) {
           c.excludeFromSitemap !== true,
       )
       .map((option) => `https://www.growthepie.xyz/chains/${option.urlKey}`),
-    ...trackers.options
-      .filter((c) => c.hide !== true && c.excludeFromSitemap !== true)
-      .map((option) => `https://www.growthepie.xyz/trackers/${option.urlKey}`),
   ];
 
   const getDate = () => {
