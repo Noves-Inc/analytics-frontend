@@ -24,7 +24,7 @@ jobs:
             dev)
               echo 'env=["dev"]' >> $GITHUB_OUTPUT 
               ;;
-            master)
+            main)
               echo 'env=["stg", "prod"]' >> $GITHUB_OUTPUT 
               ;;
             *)
