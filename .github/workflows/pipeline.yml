@@ -65,7 +65,8 @@ jobs:
           for file in $(ls -1 ./configs/${{ matrix.env }})
           do
               rm -f .env
-              cp ./configs/${{ matrix.env }}/$file .env
+              if [ "${{ matrix.env }}" == "stg" ]; then ENV=staging; else ENV=${{ matrix.env }}; fi
+              cp ./configs/$ENV/$file .env
               docker build . -t "noves.azurecr.io/${REPO_NAME}:${{ matrix.env }}-${SHA}-${TS}"
               docker push "noves.azurecr.io/${REPO_NAME}:${{ matrix.env }}-${SHA}-${TS}"
           done
