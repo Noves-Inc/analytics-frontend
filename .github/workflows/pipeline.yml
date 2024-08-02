@@ -62,10 +62,10 @@ jobs:
           REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
           SHA=${GITHUB_SHA::8}
           TS=$(date +%s)
-          for file in $(ls -1 ./configs/$1)
+          for file in $(ls -1 ./configs/${{ matrix.env }})
           do
               rm -f .env
-              cp ./configs/$1/$file .env
+              cp ./configs/${{ matrix.env }}/$file .env
               docker build . -t "noves.azurecr.io/${REPO_NAME}:${{ matrix.env }}-${SHA}-${TS}"
               docker push "noves.azurecr.io/${REPO_NAME}:${{ matrix.env }}-${SHA}-${TS}"
           done
