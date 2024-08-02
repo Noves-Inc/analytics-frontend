@@ -632,7 +632,11 @@ export const Get_SupportedChainKeys = (
   }
 
   let keys = Object.keys(data.chains)
-    .filter((key) => ["PROD"].includes(data.chains[key].deployment))
+    .filter(
+      (key) =>
+        ["PROD"].includes(data.chains[key].deployment) &&
+        comparisonChains?.includes(data.chains[key].name_short),
+    )
     .map((key) => key);
 
   if (additionalKeys) {
