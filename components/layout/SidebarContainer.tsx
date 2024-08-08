@@ -4,12 +4,12 @@ import Link from "next/link";
 import Sidebar from "./Sidebar";
 import { Icon } from "@iconify/react";
 import { useUIContext } from "@/contexts/UIContext";
-import { useMediaQuery } from "usehooks-ts";
-import { useEffect } from "react";
 import { track } from "@vercel/analytics";
+import { useHeaderInfo } from "@/hooks/useHeaderInfo";
 
 export default function SidebarContainer() {
   const { isSidebarOpen, toggleSidebar } = useUIContext();
+  const { name, imagePath } = useHeaderInfo();
 
   return (
     <div className="pr-[2px] bg-white dark:bg-forest-1000">
@@ -23,17 +23,9 @@ export default function SidebarContainer() {
               >
                 <div className="h-[45.07px] w-[192.87px] absolute left-3">
                   <Image
-                    src="/icons/chain-logo-dark.svg"
-                    alt="Forest"
-                    className="mb-6 -ml-[9px] z-10 crisp-edges hidden dark:block"
-                    fill={true}
-                    quality={100}
-                    sizes="33vw"
-                  />
-                  <Image
-                    src="/icons/chain-logo-light.svg"
-                    alt="Forest"
-                    className="mb-6 -ml-[9px] z-10 crisp-edges block dark:hidden"
+                    src={imagePath}
+                    alt={name}
+                    className="mb-6 -ml-[9px] z-10 crisp-edges block"
                     fill={true}
                     quality={100}
                     sizes="33vw"
@@ -63,8 +55,8 @@ export default function SidebarContainer() {
               <Link href="/" className="relative h-[24px] w-[22.29px] block">
                 <div className="h-[24px] w-[22.29px] absolute left-3">
                   <Image
-                    src="/icons/chain-logo-dark.svg"
-                    alt="Forest"
+                    src={imagePath}
+                    alt={name}
                     className="mb-6 -ml-[9px] z-10 w-[102.704px] h-[24px] object-cover object-left"
                     width={102.704}
                     height={24}

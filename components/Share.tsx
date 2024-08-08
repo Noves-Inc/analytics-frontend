@@ -18,7 +18,6 @@ export default function Share() {
   const [openShare, setOpenShare] = useState(false);
   const [currentURL, setcurrentURL] = useState<string | null>(null);
 
-
   type TopSelections = "social" | "embed";
 
   const defaultTopSelection: TopSelections = "social";
@@ -77,20 +76,19 @@ export default function Share() {
       }, 2000); // 3000 milliseconds (3 seconds)
     }
     setMarkdownCopied(true);
-
   };
 
   const handleSendEmail = () => {
     if (currentURL !== null) {
       const mailtoLink = `mailto:${""}?subject=${encodeURIComponent(
-        "Check out what I found on growthepie.xyz!",
+        "Check out what I found on noves.fi!",
       )}&body=${encodeURIComponent(currentURL)}`;
       window.location.href = mailtoLink;
     }
   };
 
   const shareOnTwitter = () => {
-    const text = "Check out what I found on growthepie.xyz!";
+    const text = "Check out what I found on noves.fi!";
     if (currentURL !== null) {
       const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
         currentURL,
@@ -101,7 +99,7 @@ export default function Share() {
 
   const shareOnReddit = () => {
     if (currentURL !== null) {
-      const title = "Check out what I found on growthepie.xyz!";
+      const title = "Check out what I found on noves.fi!";
       const redditShareUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(
         currentURL,
       )}&title=${encodeURIComponent(title)}`;
@@ -127,8 +125,6 @@ export default function Share() {
     }
   };
 
-
-
   const firstUrlPart = pathname.split("/")[1];
 
   const embedEnabled = useMemo(() => {
@@ -145,7 +141,6 @@ export default function Share() {
       setTopSelection("social");
     }
   }, [pathname]);
-
 
   const embedDataString = useMemo(() => {
     return `width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" title="${embedData.title}"`;
@@ -195,9 +190,10 @@ export default function Share() {
               />
               <div
                 className={`absolute -right-[5px] -bottom-[5px] bg-forest-50 dark:bg-[#1F2726] z-[110] rounded-[40px] shadow-lg py-[30px] px-[20px] 
-                  border-[5px] border-forest-500 dark:border-[#5A6462] transition-all duration-300 select-none ${topSelection === "social"
-                    ? "w-[calc(100vw-30px)] xs:w-[calc(100vw-46px)] md:w-[453px]"
-                    : "w-[calc(100vw-30px)] xs:w-[calc(100vw-46px)] md:w-[579px]"
+                  border-[5px] border-forest-500 dark:border-[#5A6462] transition-all duration-300 select-none ${
+                    topSelection === "social"
+                      ? "w-[calc(100vw-30px)] xs:w-[calc(100vw-46px)] md:w-[453px]"
+                      : "w-[calc(100vw-30px)] xs:w-[calc(100vw-46px)] md:w-[579px]"
                   }`}
               >
                 <div className="flex w-full h-[32px] justify-between items-center justify-self-start ">
@@ -229,10 +225,11 @@ export default function Share() {
                 </div>
                 <div className="flex gap-x-[5px] mt-[15px]">
                   <div
-                    className={`flex items-center justify-center border px-[16px] py-[2px] text-[14px] leading-[20px] rounded-full hover:cursor-pointer transition ${topSelection === "social"
-                      ? "bg-forest-200 border-forest-200 dark:bg-[#151A19] dark:border-[#151A19]"
-                      : "border-forest-500 dark:border-[#5A6462] hover:bg-forest-500 hover:border-forest-500 dark:hover:bg-forest-900 dark:hover:border-forest-900"
-                      }`}
+                    className={`flex items-center justify-center border px-[16px] py-[2px] text-[14px] leading-[20px] rounded-full hover:cursor-pointer transition ${
+                      topSelection === "social"
+                        ? "bg-forest-200 border-forest-200 dark:bg-[#151A19] dark:border-[#151A19]"
+                        : "border-forest-500 dark:border-[#5A6462] hover:bg-forest-500 hover:border-forest-500 dark:hover:bg-forest-900 dark:hover:border-forest-900"
+                    }`}
                     onClick={() => {
                       setTopSelection("social");
                       track("clicked Social in Share window", {
@@ -243,21 +240,24 @@ export default function Share() {
                   >
                     Social Media
                   </div>
-                  {embedEnabled && (<div
-                    className={`flex items-center justify-center border px-[16px] py-[2px] text-[14px] leading-[20px] rounded-full hover:cursor-pointer transition ${topSelection === "embed"
-                      ? "bg-forest-200 border-forest-200 dark:bg-[#151A19] dark:border-[#151A19]"
-                      : "border-forest-500 dark:border-[#5A6462] hover:bg-forest-500 hover:border-forest-500 dark:hover:bg-forest-900 dark:hover:border-forest-900"
+                  {embedEnabled && (
+                    <div
+                      className={`flex items-center justify-center border px-[16px] py-[2px] text-[14px] leading-[20px] rounded-full hover:cursor-pointer transition ${
+                        topSelection === "embed"
+                          ? "bg-forest-200 border-forest-200 dark:bg-[#151A19] dark:border-[#151A19]"
+                          : "border-forest-500 dark:border-[#5A6462] hover:bg-forest-500 hover:border-forest-500 dark:hover:bg-forest-900 dark:hover:border-forest-900"
                       }`}
-                    onClick={() => {
-                      setTopSelection("embed");
-                      track("clicked Embed in Share window", {
-                        location: isMobile ? `mobile` : `desktop`,
-                        page: window.location.pathname,
-                      });
-                    }}
-                  >
-                    Embed
-                  </div>)}
+                      onClick={() => {
+                        setTopSelection("embed");
+                        track("clicked Embed in Share window", {
+                          location: isMobile ? `mobile` : `desktop`,
+                          page: window.location.pathname,
+                        });
+                      }}
+                    >
+                      Embed
+                    </div>
+                  )}
                 </div>
                 {topSelection === "social" && (
                   <div className="flex flex-col-reverse items-center mt-[30px] w-full text-[16px] leading-[150%] h-[234px]">
@@ -309,13 +309,15 @@ export default function Share() {
 
                         <div className="ml-auto flex items-center">
                           <Icon
-                            className={`absolute right-[15px] w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500  ${copied ? "opacity-0" : "opacity-100"
-                              }`}
+                            className={`absolute right-[15px] w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500  ${
+                              copied ? "opacity-0" : "opacity-100"
+                            }`}
                             icon="feather:copy"
                           />
                           <Icon
-                            className={`absolute right-[15px] w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500  ${copied ? "opacity-100" : "opacity-0"
-                              }`}
+                            className={`absolute right-[15px] w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500  ${
+                              copied ? "opacity-100" : "opacity-0"
+                            }`}
                             icon="feather:check"
                           />
                         </div>
@@ -381,16 +383,23 @@ export default function Share() {
                 {topSelection === "embed" && (
                   <div className="relative flex flex-col md:flex-row gap-x-[30px] mt-[30px] w-full">
                     {(IS_DEVELOPMENT || IS_PREVIEW) && (
-                      <Link href={`${BASE_URL}/embed/test?url=${encodeURIComponent(`${embedData.src}`)}&width=${embedData.width}&height=${embedData.height}&title=${embedData.title}`} target="_blank" rel="noopener" className="absolute -bottom-7 left-10 p-[5px] text-xs px-3 py-1 rounded-full border border-forest-500 dark:border-forest-800  hover:bg-forest-500 dark:hover:bg-[#5A6462] cursor-pointer">
+                      <Link
+                        href={`${BASE_URL}/embed/test?url=${encodeURIComponent(
+                          `${embedData.src}`,
+                        )}&width=${embedData.width}&height=${
+                          embedData.height
+                        }&title=${embedData.title}`}
+                        target="_blank"
+                        rel="noopener"
+                        className="absolute -bottom-7 left-10 p-[5px] text-xs px-3 py-1 rounded-full border border-forest-500 dark:border-forest-800  hover:bg-forest-500 dark:hover:bg-[#5A6462] cursor-pointer"
+                      >
                         Click here to test embed
                       </Link>
                     )}
                     <textarea
-                      value={
-                        `<iframe
+                      value={`<iframe
 width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" title="${embedData.title}">
-</iframe>`
-                      }
+</iframe>`}
                       className="font-light font-mono p-[15px] rounded-[25px] border-forest-500 dark:border-forest-600 border-[1px] h-full min-h-[231px] w-full text-[12px] leading-[150%] bg-transparent select-all outline-none resize-none cursor-text selection:bg-forest-900 dark:selection:bg-forest-900 dark:bg-[#1F2726] dark:text-forest-100"
                       onClick={(e) => {
                         e.currentTarget.select();
@@ -403,7 +412,9 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                     />
                     <div className="flex flex-col h-full gap-y-[2px] w-full">
                       <div className="flex w-full justify-between items-center">
-                        <div className="text-medium leading-[120%]">Timeframe</div>
+                        <div className="text-medium leading-[120%]">
+                          Timeframe
+                        </div>
                         <Tooltip placement="left" allowInteract>
                           <TooltipTrigger>
                             <div className="w-6 h-6">
@@ -412,11 +423,22 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                           </TooltipTrigger>
                           <TooltipContent className="z-50 flex items-center justify-center pr-[3px]">
                             <div className="flex flex-col px-3 py-4 text-xs bg-forest-100 dark:bg-[#4B5553] text-forest-900 dark:text-forest-100 rounded-xl shadow-lg z-50 w-auto max-w-md font-normal">
-                              <div className="font-semibold">Snapshot Timeframe</div>
-                              <div className="mb-1">The embedded chart&apos;s time window will be frozen to the current chart state.</div>
-                              <div className="font-semibold">Updating Timeframe</div>
-                              <div>The embedded chart&apos;s time window will change depending on when the chart is viewed. This option is disabled when the chart is zoomed in to a custom timeframe.</div>
-
+                              <div className="font-semibold">
+                                Snapshot Timeframe
+                              </div>
+                              <div className="mb-1">
+                                The embedded chart&apos;s time window will be
+                                frozen to the current chart state.
+                              </div>
+                              <div className="font-semibold">
+                                Updating Timeframe
+                              </div>
+                              <div>
+                                The embedded chart&apos;s time window will
+                                change depending on when the chart is viewed.
+                                This option is disabled when the chart is zoomed
+                                in to a custom timeframe.
+                              </div>
                             </div>
                           </TooltipContent>
                         </Tooltip>
@@ -463,27 +485,50 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                           onClick={() => {
                             if (embedData.zoomed) return;
 
-                            const newTimeframe = embedData.timeframe === "absolute" ? "relative" : "absolute";
-                            setEmbedData(prev => ({ ...prev, timeframe: newTimeframe }))
-                            track("selected Timeframe in Share Embed window: " + newTimeframe, {
-                              location: isMobile ? `mobile` : `desktop`,
-                              page: window.location.pathname,
-                            });
-                          }}>
+                            const newTimeframe =
+                              embedData.timeframe === "absolute"
+                                ? "relative"
+                                : "absolute";
+                            setEmbedData((prev) => ({
+                              ...prev,
+                              timeframe: newTimeframe,
+                            }));
+                            track(
+                              "selected Timeframe in Share Embed window: " +
+                                newTimeframe,
+                              {
+                                location: isMobile ? `mobile` : `desktop`,
+                                page: window.location.pathname,
+                              },
+                            );
+                          }}
+                        >
                           <div className="w-full flex justify-between text-[#2D3748]">
                             <div className="w-full text-center">Snapshot</div>
-                            <div className={`w-full text-center ${embedData.zoomed && 'opacity-50'}`}>Updating</div>
-                          </div>
-                          <div className="absolute inset-0 w-full p-0.5 rounded-full text-center">
-                            <div className="w-1/2 h-full bg-forest-50 dark:bg-forest-900 rounded-full text-center transition-transform duration-300" style={{ transform: embedData.timeframe === "absolute" || embedData.zoomed ? "translateX(0%)" : "translateX(100%)" }}>
-                              {
-                                embedData.timeframe === "absolute" ?
-                                  "Snapshot"
-                                  : "Updating"
-                              }
+                            <div
+                              className={`w-full text-center ${
+                                embedData.zoomed && "opacity-50"
+                              }`}
+                            >
+                              Updating
                             </div>
                           </div>
-
+                          <div className="absolute inset-0 w-full p-0.5 rounded-full text-center">
+                            <div
+                              className="w-1/2 h-full bg-forest-50 dark:bg-forest-900 rounded-full text-center transition-transform duration-300"
+                              style={{
+                                transform:
+                                  embedData.timeframe === "absolute" ||
+                                  embedData.zoomed
+                                    ? "translateX(0%)"
+                                    : "translateX(100%)",
+                              }}
+                            >
+                              {embedData.timeframe === "absolute"
+                                ? "Snapshot"
+                                : "Updating"}
+                            </div>
+                          </div>
                         </div>
 
                         <div className="flex items-center gap-x-[10px] h-[54px] rounded-full border-transparent border-[2px] px-[15px]">
@@ -494,11 +539,24 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                             />
                           </div>
                           <div className="flex items-center w-full gap-x-[5px]">
-                            <div className={`cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800 ${embedData.width <= 450 && "opacity-30"}`}>
-                              <div className="w-[24px] h-[24px]" onClick={() => {
-                                setEmbedData({ ...embedData, width: Math.max(450, embedData.width - 1) });
-                              }}>
-                                <Icon className="w-[24px] h-[24px]" icon="feather:minus" />
+                            <div
+                              className={`cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800 ${
+                                embedData.width <= 450 && "opacity-30"
+                              }`}
+                            >
+                              <div
+                                className="w-[24px] h-[24px]"
+                                onClick={() => {
+                                  setEmbedData({
+                                    ...embedData,
+                                    width: Math.max(450, embedData.width - 1),
+                                  });
+                                }}
+                              >
+                                <Icon
+                                  className="w-[24px] h-[24px]"
+                                  icon="feather:minus"
+                                />
                               </div>
                             </div>
                             <div className="flex items-center gap-x-[2px] border-b border-dashed border-forest-400 w-20 justify-center">
@@ -515,17 +573,29 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                                 style={{
                                   boxShadow: "none", // Remove default focus box shadow
                                 }}
-
                               />
                               {/* {embedData.width}
                               </div> */}
-                              <div className="text-xs text-forest-400 pr-4">px</div>
+                              <div className="text-xs text-forest-400 pr-4">
+                                px
+                              </div>
                             </div>
-                            <div className={`cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800`}>
-                              <div className="w-[24px] h-[24px] cursor-pointer" onClick={() => {
-                                setEmbedData({ ...embedData, width: embedData.width + 1 });
-                              }}>
-                                <Icon className="w-[24px] h-[24px]" icon="feather:plus" />
+                            <div
+                              className={`cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800`}
+                            >
+                              <div
+                                className="w-[24px] h-[24px] cursor-pointer"
+                                onClick={() => {
+                                  setEmbedData({
+                                    ...embedData,
+                                    width: embedData.width + 1,
+                                  });
+                                }}
+                              >
+                                <Icon
+                                  className="w-[24px] h-[24px]"
+                                  icon="feather:plus"
+                                />
                               </div>
                             </div>
                             <div className="flex-1 flex justify-center items-center left-44 text-forest-400 text-xs">
@@ -544,11 +614,24 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                             />
                           </div>
                           <div className="flex items-center w-full gap-x-[5px]">
-                            <div className={`cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800 ${embedData.height <= 500 && "opacity-30"}`}>
-                              <div className="w-[24px] h-[24px]" onClick={() => {
-                                setEmbedData({ ...embedData, height: Math.max(500, embedData.height - 1) });
-                              }}>
-                                <Icon className="w-[24px] h-[24px]" icon="feather:minus" />
+                            <div
+                              className={`cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800 ${
+                                embedData.height <= 500 && "opacity-30"
+                              }`}
+                            >
+                              <div
+                                className="w-[24px] h-[24px]"
+                                onClick={() => {
+                                  setEmbedData({
+                                    ...embedData,
+                                    height: Math.max(500, embedData.height - 1),
+                                  });
+                                }}
+                              >
+                                <Icon
+                                  className="w-[24px] h-[24px]"
+                                  icon="feather:minus"
+                                />
                               </div>
                             </div>
                             <div className="flex items-center gap-x-[2px] border-b border-dashed border-forest-400 w-20 justify-center">
@@ -565,17 +648,27 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                                 style={{
                                   boxShadow: "none", // Remove default focus box shadow
                                 }}
-
                               />
                               {/* {embedData.height}
                               </div> */}
-                              <div className="text-xs text-forest-400 pr-4">px</div>
+                              <div className="text-xs text-forest-400 pr-4">
+                                px
+                              </div>
                             </div>
                             <div className="cursor-pointer rounded-full p-0.5 text-forest-600 dark:text-forest-400 bg-forest-200 dark:bg-forest-900 transition-colors hover:bg-forest-300 dark:hover:bg-forest-800">
-                              <div className="w-[24px] h-[24px] cursor-pointer" onClick={() => {
-                                setEmbedData({ ...embedData, height: embedData.height + 1 });
-                              }}>
-                                <Icon className="w-[24px] h-[24px]" icon="feather:plus" />
+                              <div
+                                className="w-[24px] h-[24px] cursor-pointer"
+                                onClick={() => {
+                                  setEmbedData({
+                                    ...embedData,
+                                    height: embedData.height + 1,
+                                  });
+                                }}
+                              >
+                                <Icon
+                                  className="w-[24px] h-[24px]"
+                                  icon="feather:plus"
+                                />
                               </div>
                             </div>
                             <div className="flex-1 flex justify-center items-center left-44 text-forest-400 text-xs">
@@ -599,30 +692,44 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
                             className="w-[24px] h-[24px] font-semibold"
                             icon="gtp:code-slash"
                           />
-                          <div>{copied ? "HTML Code Copied" : "Copy HTML Code"}</div>
+                          <div>
+                            {copied ? "HTML Code Copied" : "Copy HTML Code"}
+                          </div>
                           <div className="flex ml-auto relative w-[24px] h-[24px]">
                             <Icon
-                              className={`absolute  w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500 ${copied ? "opacity-0" : "opacity-100"
-                                }`}
+                              className={`absolute  w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500 ${
+                                copied ? "opacity-0" : "opacity-100"
+                              }`}
                               icon="feather:copy"
-
                             />
                             <Icon
-                              className={`absolute w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500 ${copied ? "opacity-100" : "opacity-0"
-                                }`}
+                              className={`absolute w-[24px] h-[24px] font-semibold transition-all duration-300 text-[#5A6462] group-hover:text-forest-700 dark:group-hover:text-forest-500 ${
+                                copied ? "opacity-100" : "opacity-0"
+                              }`}
                               icon="feather:check"
                             />
                           </div>
                         </div>
-                        <div className="absolute -bottom-[22px] right-0 left-1/2 text-center text-xs text-forest-400">or{" "}
-                          <span className="cursor-pointer underline text-forest-900 dark:text-forest-500 hover:text-black dark:hover:text-forest-50" onClick={() => {
-                            copyText(markdownEmbedIframe);
-                            triggerCopyMarkdownEmbed();
-                            track("copied Markdown URL in Share Embed window", {
-                              location: isMobile ? `mobile` : `desktop`,
-                              page: window.location.pathname,
-                            });
-                          }}>{markdownCopied ? "Markdown Code Copied" : "Copy Markdown Code"}</span>
+                        <div className="absolute -bottom-[22px] right-0 left-1/2 text-center text-xs text-forest-400">
+                          or{" "}
+                          <span
+                            className="cursor-pointer underline text-forest-900 dark:text-forest-500 hover:text-black dark:hover:text-forest-50"
+                            onClick={() => {
+                              copyText(markdownEmbedIframe);
+                              triggerCopyMarkdownEmbed();
+                              track(
+                                "copied Markdown URL in Share Embed window",
+                                {
+                                  location: isMobile ? `mobile` : `desktop`,
+                                  page: window.location.pathname,
+                                },
+                              );
+                            }}
+                          >
+                            {markdownCopied
+                              ? "Markdown Code Copied"
+                              : "Copy Markdown Code"}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -632,7 +739,7 @@ width="${embedData.width}" height="${embedData.height}" src="${embedData.src}" t
             </>
           )}
         </div>
-      </div >
+      </div>
     </>
   );
 }

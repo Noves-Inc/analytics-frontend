@@ -51,10 +51,13 @@ const EmbedContainer = ({
       {title && (
         <div className="flex items-center gap-x-2 justify-center md:justify-between font-semibold bg-forest-50 dark:bg-[#1F2726] rounded-full md:px-[5px]">
           <div className="flex items-center px-[11px] py-[3px] md:px-[21px] md:py-[10px] gap-x-[8px]">
-            <div className="flex items-center w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
-              <Icon
-                className="w-[24px] h-[24px] md:w-[40px] md:h-[40px] font-semibold"
-                icon={icon}
+            <div className="flex items-center w-[24px] h-[24px] md:w-[40px] md:h-[40px] mr-4">
+              <Image
+                src="/icons/noves-logo.svg"
+                alt="Noves"
+                quality={100}
+                width={100}
+                height={100}
               />
             </div>
             <div className="font-semibold text-[16px] md:text-[30px] leading-[120%]">
