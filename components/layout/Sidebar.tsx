@@ -14,6 +14,7 @@ import Backgrounds from "./Backgrounds";
 import rpgf from "@/icons/svg/rpgf.svg";
 import { useTheme } from "next-themes";
 import { track } from "@vercel/analytics";
+import { useHeaderInfo } from "@/hooks/useHeaderInfo";
 
 type SidebarProps = {
   className?: string;
@@ -24,6 +25,7 @@ type SidebarProps = {
 export default function Sidebar({ isMobile = false }: SidebarProps) {
   const { isSidebarOpen, isMobileSidebarOpen, toggleMobileSidebar } =
     useUIContext();
+  const { name, imagePath, novesImagePath } = useHeaderInfo();
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -94,17 +96,18 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
               <div className="flex justify-between space-x-[20px] items-center w-full pointer-events-auto">
                 <Link href="/" className="w-24 h-24 relative">
                   <Image
-                    src="/icons/chain-logo-dark.svg"
-                    alt="Forest"
-                    className="antialiased"
+                    src={imagePath}
+                    alt={name}
+                    className="block"
                     fill={true}
                     quality={100}
+                    sizes="33vw"
                   />
                 </Link>
                 <div className="flex space-x-[20px] items-end">
                   <div className="z-[999] flex items-center space-x-[16px] mb-0.5 w-full px-2">
                     <Link
-                      href="https://twitter.com/growthepie_eth"
+                      href="https://twitter.com/noves_fi"
                       target="_blank"
                       rel="noopener"
                       onClick={() => {
@@ -116,7 +119,7 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                     >
                       <Icon icon="gtp:twitter" className="h-[19px] w-[19px]" />
                     </Link>
-                    <Link
+                    {/*                     <Link
                       href="https://share.lens.xyz/u/growthepie.lens"
                       target="_blank"
                       rel="noopener"
@@ -129,8 +132,8 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                       }}
                     >
                       <Icon icon="gtp:lens" className="h-[19px] w-[24px]" />
-                    </Link>
-
+                    </Link> */}
+                    {/* 
                     <Link
                       href="https://warpcast.com/growthepie"
                       target="_blank"
@@ -147,8 +150,8 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                         icon="gtp:farcaster"
                         className="h-[19px] w-[19px]"
                       />
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/*                     <Link
                       href="https://discord.gg/fxjJFe7QyN"
                       target="_blank"
                       rel="noopener"
@@ -161,8 +164,8 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                       }}
                     >
                       <Icon icon="cib:discord" className="h-[19px] w-[19px]" />
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/*                     <Link
                       href="https://www.github.com/growthepie"
                       target="_blank"
                       rel="noopener"
@@ -175,7 +178,7 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                       }}
                     >
                       <Icon icon="cib:github" className="h-[19px] w-[19px]" />
-                    </Link>
+                    </Link> */}
                   </div>
                   <button
                     className="!-mb-1  !-mr-1"
@@ -218,9 +221,30 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
                     <EthUsdSwitch isMobile />
                   </div>
                 </div>
-                <div className="mt-24 w-full text-center py-6 absolute bottom-0">
-                  <div className="text-[0.7rem] text-inherit leading-[2] z-[999]">
-                    © {new Date().getFullYear()} growthepie 🥧
+                <div className="block md:hidden text-[10px] w-full leading-[1.5]">
+                  <div className="flex items-center">
+                    <Image
+                      src={novesImagePath}
+                      alt="Noves"
+                      quality={100}
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                </div>
+                <div className="w-[230.87px] md:w-[362px] flex text-xs leading-[1.5] mt-4">
+                  <Link href="/privacy-policy" className="md:underline mr-4">
+                    Privacy Policy
+                  </Link>
+                  <div className="flex">
+                    © {new Date().getFullYear()}
+                    <a
+                      href="https://www.growthepie.xyz/"
+                      target="_blank"
+                      className="ml-1"
+                    >
+                      growthepie
+                    </a>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ export default function HeaderLinks() {
   return (
     <>
       <Link
-        href="https://twitter.com/growthepie_eth"
+        href="https://x.com/noves_fi"
         target="_blank"
         rel="noopener"
         onClick={() => {
@@ -20,7 +20,7 @@ export default function HeaderLinks() {
         <Icon icon="gtp:twitter" className="h-6 w-[24px]" />
       </Link>
 
-      <Link
+      {/*       <Link
         href="https://share.lens.xyz/u/growthepie.lens"
         target="_blank"
         rel="noopener"
@@ -33,9 +33,9 @@ export default function HeaderLinks() {
         }}
       >
         <Icon icon="gtp:lens" className="h-6 w-7" />
-      </Link>
+      </Link> */}
 
-      <Link
+      {/*       <Link
         href="https://warpcast.com/growthepie"
         target="_blank"
         rel="noopener"
@@ -48,9 +48,9 @@ export default function HeaderLinks() {
         }}
       >
         <Icon icon="gtp:farcaster" className="h-[24px] w-[26px]" />
-      </Link>
+      </Link> */}
 
-      <Link
+      {/*       <Link
         href="https://discord.gg/fxjJFe7QyN"
         target="_blank"
         rel="noopener"
@@ -63,8 +63,8 @@ export default function HeaderLinks() {
         }}
       >
         <Icon icon="cib:discord" className="h-6 w-7 pt-[2px]" />
-      </Link>
-      <Link
+      </Link> */}
+      {/*       <Link
         href="https://www.github.com/growthepie"
         target="_blank"
         rel="noopener"
@@ -77,7 +77,7 @@ export default function HeaderLinks() {
         }}
       >
         <Icon icon="cib:github" className="h-6 w-6" />
-      </Link>
+      </Link> */}
     </>
   );
 }

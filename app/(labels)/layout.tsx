@@ -202,13 +202,13 @@ export default function RootLayout({
               </div>
               <div className="z-50 flex fixed inset-0 w-full justify-end pointer-events-none select-none">
                 <div className="flex flex-col justify-end w-full max-w-[650px] md:max-w-full mx-auto min-h-screen">
-                  {/* <LabelsContainer className="flex w-full justify-end pb-[20px]">
+                  <LabelsContainer className="flex w-full justify-end pb-[20px]">
                     <div className="pointer-events-auto">
                       <div className="relative flex gap-x-[15px] z-50 p-[5px] bg-forest-500 dark:bg-[#344240] rounded-full shadow-[0px_0px_50px_0px_#00000033] dark:shadow-[0px_0px_50px_0px_#000000]">
                         <Share />
                       </div>
                     </div>
-                  </LabelsContainer> */}
+                  </LabelsContainer>
                 </div>
               </div>
             </div>

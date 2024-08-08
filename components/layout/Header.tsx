@@ -1,16 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
-import Icon from "./Icon";
 import EthUsdSwitch from "./EthUsdSwitch";
 
-import Banner from "@/components/Banner";
-import SupportUsBanner from "./SupportUsBanner";
 import Notification from "@/components/Notification";
 import HeaderLinks from "./HeaderLinks";
-import { track } from "@vercel/analytics";
+import { useHeaderInfo } from "@/hooks/useHeaderInfo";
 
 export default function Header() {
+  const { name, imagePath } = useHeaderInfo();
   return (
     <header className="flex justify-between space-x-0 xl:space-x-6 items-start max-w-[1600px] w-full mx-auto px-[20px] pt-[20px] md:px-[50px] md:pt-[52px]">
       <div className="flex justify-between items-center w-full">
@@ -25,17 +24,9 @@ export default function Header() {
             <Link href="/" className="">
               <div className="h-[36px] w-[154.05px] relative ">
                 <Image
-                  src="/icons/chain-logo-dark.svg"
-                  alt="Forest"
-                  className="hidden dark:block"
-                  fill={true}
-                  quality={100}
-                  sizes="33vw"
-                />
-                <Image
-                  src="/icons/chain-logo-dark.svg"
-                  alt="Forest"
-                  className="block dark:hidden"
+                  src={imagePath}
+                  alt={name}
+                  className="block"
                   fill={true}
                   quality={100}
                   sizes="33vw"

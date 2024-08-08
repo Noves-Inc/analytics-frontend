@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import { track } from "@vercel/analytics";
-import Icon from "@/components/layout/Icon";
+import Image from "next/image";
 
 export default function BottomBanner() {
   return (
@@ -11,19 +10,52 @@ export default function BottomBanner() {
         <div className="flex flex-col gap-y-[10px] w-full md:w-auto">
           {/*desktop text*/}
           <div className="hidden md:block text-[10px] w-full leading-[1.5]">
-            <div>FOOTER TEXT TBC</div>
+            <div className="flex items-center">
+              <Image
+                src="/icons/noves-logo-full.svg"
+                alt="Noves"
+                quality={100}
+                width={100}
+                height={100}
+              />
+            </div>
           </div>
           {/*mobile text*/}
           <div className="block md:hidden text-[10px] w-full leading-[1.5]">
-            <div>FOOTER TEXT TBC</div>
+            <div className="flex items-center">
+              <Image
+                src="/icons/noves-logo-full.svg"
+                alt="Noves"
+                quality={100}
+                width={100}
+                height={100}
+              />
+            </div>
           </div>
-          <div className="w-[230.87px] md:w-[362px] flex justify-between text-xs leading-[1.5]">
+          <div className="w-[230.87px] md:w-[362px] flex text-xs leading-[1.5]">
+            <Link href="/privacy-policy" className="md:underline mr-4">
+              Privacy Policy
+            </Link>
             <div className="hidden md:flex">
-              © {new Date().getFullYear()} growthepie 🥧📏
+              © {new Date().getFullYear()}
+              <a
+                href="https://www.growthepie.xyz/"
+                target="_blank"
+                className="ml-1"
+              >
+                growthepie
+              </a>
             </div>
           </div>
           <div className="md:hidden pt-[30px] text-xs text-center w-full">
-            © {new Date().getFullYear()} growthepie 🥧📏
+            © {new Date().getFullYear()}
+            <a
+              href="https://www.growthepie.xyz/"
+              target="_blank"
+              className="ml-1"
+            >
+              growthepie
+            </a>
           </div>
         </div>
         <div className="hidden md:flex justify-end"></div>

@@ -1692,8 +1692,8 @@ export default function ComparisonChart({
     return (
       <EmbedContainer
         title={navItem?.label || ""}
-        icon="gtp:gtp-pie"
-        url="https://www.growthepie.xyz"
+        icon="gtp:noves"
+        url="https://www.noves.fi"
         time_frame={timespans[selectedTimespan].label}
         chart_type={selectedScale}
         aggregation={embedAggregation}
@@ -1719,7 +1719,7 @@ export default function ComparisonChart({
             </div>
           )}
           <div className="absolute bottom-[53.5%] left-0 right-0 flex items-center justify-center pointer-events-none z-0 opacity-50">
-            <ChartWatermark className="w-[128.67px] h-[30.67px] md:w-[193px] md:h-[46px] text-forest-300 dark:text-[#EAECEB] mix-blend-darken dark:mix-blend-lighten" />
+            <ChartWatermark className="w-[60px] h-[22px] md:w-[100px] md:h-[20px] text-forest-300 dark:text-[#EAECEB] mix-blend-darken dark:mix-blend-lighten" />
           </div>
           {filteredData.length === 0 && (
             <div className="absolute top-[calc(50%+2rem)] left-[0px] text-xs font-medium flex justify-center w-full text-forest-500/60">

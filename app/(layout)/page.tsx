@@ -144,7 +144,7 @@ export default async function Page() {
           </div>
         </div> */}
 
-        <div className="flex mt-[25px] md:mt-[60px] mb-[25px] md:mb-[30px] ml-1.5 md:ml-0 space-x-2 items-center">
+        {/*         <div className="flex mt-[25px] md:mt-[60px] mb-[25px] md:mb-[30px] ml-1.5 md:ml-0 space-x-2 items-center">
           <Icon
             icon="gtp:gtp-faq"
             className="w-[30px] h-[30px] md:w-9 md:h-9 text-brandColor"
@@ -270,7 +270,7 @@ export default async function Page() {
               </>
             }
           />
-        </div>
+        </div> */}
       </Container>
       <Home />
     </>

@@ -197,7 +197,7 @@ export const Chart = ({
           allCats === true
             ? undefined
             : AllChainsByKeys[chainKey].colors[theme ?? "dark"][0] +
-            fillHexColorOpacity;
+              fillHexColorOpacity;
 
         const normalAreaColor = {
           linearGradient: {
@@ -209,47 +209,47 @@ export const Chart = ({
           stops:
             theme === "dark"
               ? [
-                [
-                  0,
-                  AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][0] +
-                  "E6",
-                ],
-                [
-                  1,
-                  AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][1] +
-                  "E6",
-                ],
-              ]
+                  [
+                    0,
+                    AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][0] +
+                      "E6",
+                  ],
+                  [
+                    1,
+                    AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][1] +
+                      "E6",
+                  ],
+                ]
               : [
-                [
-                  0,
-                  AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][0] +
-                  "E6",
+                  [
+                    0,
+                    AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][0] +
+                      "E6",
+                  ],
+                  [
+                    1,
+                    AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][1] +
+                      "E6",
+                  ],
                 ],
-                [
-                  1,
-                  AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][1] +
-                  "E6",
-                ],
-              ],
         };
 
         let blockspaceAreaColor =
           s.custom?.tooltipLabel === "Unlabeled" && allCats === true
             ? {
-              pattern: {
-                color: AllChainsByKeys[chainKey].colors["dark"][0] + "99",
-                path: {
-                  d: "M 10 0 L 0 10 M 9 11 L 11 9 M -1 1 L 1 -1",
-                  strokeWidth: 3,
+                pattern: {
+                  color: AllChainsByKeys[chainKey].colors["dark"][0] + "99",
+                  path: {
+                    d: "M 10 0 L 0 10 M 9 11 L 11 9 M -1 1 L 1 -1",
+                    strokeWidth: 3,
+                  },
+                  width: 10,
+                  height: 10,
+                  opacity: 0.99,
                 },
-                width: 10,
-                height: 10,
-                opacity: 0.99,
-              },
-            }
+              }
             : AllChainsByKeys[chainKey].colors[theme ?? "dark"][0] +
-            fillHexColorOpacity;
+              fillHexColorOpacity;
 
         const color =
           allCats === true && series.length > 1
@@ -345,16 +345,16 @@ export const Chart = ({
               ...// @ts-ignore
               (chartType !== "column"
                 ? {
-                  shadow: {
-                    color:
-                      AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][1] +
-                      (s.fillOpacity ? "11" : "33"),
-                    width: s.fillOpacity ? 6 : 10,
-                  },
-                  color: color,
-                }
+                    shadow: {
+                      color:
+                        AllChainsByKeys[chainKey]?.colors[theme ?? "dark"][1] +
+                        (s.fillOpacity ? "11" : "33"),
+                      width: s.fillOpacity ? 6 : 10,
+                    },
+                    color: color,
+                  }
                 : chainKey === "all_l2s"
-                  ? {
+                ? {
                     borderColor: "transparent",
 
                     shadow: {
@@ -368,7 +368,7 @@ export const Chart = ({
                     },
                     color: color,
                   }
-                  : {
+                : {
                     borderColor: "transparent",
                     shadow: {
                       color: "#CDD8D3" + "FF",
@@ -573,8 +573,8 @@ export const Chart = ({
                             yScale === "percentage"
                               ? "percent"
                               : stack
-                                ? "normal"
-                                : undefined,
+                              ? "normal"
+                              : undefined,
                         },
                       },
                       tooltip: {
@@ -583,8 +583,8 @@ export const Chart = ({
                           yScale === "percentageDecimal"
                             ? tooltipFormatter(true, true, decimalToPercent)
                             : yScale === "percentage"
-                              ? tooltipFormatter(true, true, null)
-                              : tooltipFormatter(
+                            ? tooltipFormatter(true, true, null)
+                            : tooltipFormatter(
                                 true,
                                 false,
                                 (x) => {
@@ -619,7 +619,11 @@ export const Chart = ({
                         tickLength: 25,
                         tickWidth: 1,
                         offset: 0,
-                        minTickInterval: timespans[timespan].xMax - timespans[timespan].xMin <= 40 * 24 * 3600 * 1000 ? 24 * 3600 * 1000 : 30 * 24 * 3600 * 1000,
+                        minTickInterval:
+                          timespans[timespan].xMax - timespans[timespan].xMin <=
+                          40 * 24 * 3600 * 1000
+                            ? 24 * 3600 * 1000
+                            : 30 * 24 * 3600 * 1000,
                         minPadding: 0,
                         maxPadding: 0,
                         labels: {
@@ -630,32 +634,48 @@ export const Chart = ({
                           reserveSpace: true,
                           overflow: "justify",
                           useHTML: true,
-                          formatter: function (this: AxisLabelsFormatterContextObject) {
+                          formatter: function (
+                            this: AxisLabelsFormatterContextObject,
+                          ) {
+                            if (
+                              timespans[timespan].xMax -
+                                timespans[timespan].xMin <=
+                              40 * 24 * 3600 * 1000
+                            ) {
+                              let isBeginningOfWeek =
+                                new Date(this.value).getUTCDay() === 1;
+                              let showMonth =
+                                this.isFirst ||
+                                new Date(this.value).getUTCDate() === 1;
 
-                            if (timespans[timespan].xMax - timespans[timespan].xMin <= 40 * 24 * 3600 * 1000) {
-                              let isBeginningOfWeek = new Date(this.value).getUTCDay() === 1;
-                              let showMonth = this.isFirst || new Date(this.value).getUTCDate() === 1;
-
-                              return new Date(this.value).toLocaleDateString("en-GB", {
-                                timeZone: "UTC",
-                                month: "short",
-                                day: "numeric",
-                                year: this.isFirst ? "numeric" : undefined,
-                              });
-                            }
-                            else {
+                              return new Date(this.value).toLocaleDateString(
+                                "en-GB",
+                                {
+                                  timeZone: "UTC",
+                                  month: "short",
+                                  day: "numeric",
+                                  year: this.isFirst ? "numeric" : undefined,
+                                },
+                              );
+                            } else {
                               // if Jan 1st, show year
                               if (new Date(this.value).getUTCMonth() === 0) {
-                                return new Date(this.value).toLocaleDateString("en-GB", {
-                                  timeZone: "UTC",
-                                  year: "numeric",
-                                });
+                                return new Date(this.value).toLocaleDateString(
+                                  "en-GB",
+                                  {
+                                    timeZone: "UTC",
+                                    year: "numeric",
+                                  },
+                                );
                               }
-                              return new Date(this.value).toLocaleDateString("en-GB", {
-                                timeZone: "UTC",
-                                month: "short",
-                                year: "numeric",
-                              });
+                              return new Date(this.value).toLocaleDateString(
+                                "en-GB",
+                                {
+                                  timeZone: "UTC",
+                                  month: "short",
+                                  year: "numeric",
+                                },
+                              );
                             }
                           },
                           y: 40,
@@ -674,9 +694,9 @@ export const Chart = ({
                         max: maxY ? maxY : undefined,
                         tickPositions: maxY
                           ? Array.from(
-                            { length: numIntervals + 1 },
-                            (_, i) => i * intervalSize,
-                          )
+                              { length: numIntervals + 1 },
+                              (_, i) => i * intervalSize,
+                            )
                           : undefined,
                         tickInterval: maxY ? yAxisTicks.interval : undefined,
                         gridLineColor:
@@ -748,10 +768,11 @@ export const Chart = ({
                 }}
               >
                 <ChartWatermark
-                  className={`h-[30.67px] md:h-[46px] ${parseInt(chartHeight, 10) > 200
-                    ? "w-[128px] md:w-[163px]"
-                    : "w-[128.67px] md:w-[193px] "
-                    } text-forest-300 dark:text-[#EAECEB] mix-blend-darken dark:mix-blend-lighten`}
+                  className={`h-[15px] md:h-[22px] ${
+                    parseInt(chartHeight, 10) > 200
+                      ? "w-[60px] md:w-[163px]"
+                      : "w-[60px] md:w-[193px] "
+                  } text-forest-300 dark:text-[#EAECEB] mix-blend-darken dark:mix-blend-lighten`}
                 />
               </div>
             </div>
