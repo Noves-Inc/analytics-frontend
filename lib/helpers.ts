@@ -5,9 +5,9 @@ export const IS_PRODUCTION =
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
 
 export const BASE_URLS = {
-  development: `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
-  preview: `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
-  production: `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
+  development: process.env.NEXT_PUBLIC_VERCEL_URL,
+  preview: process.env.NEXT_PUBLIC_VERCEL_URL,
+  production: process.env.NEXT_PUBLIC_VERCEL_URL,
 };
 
 export const BASE_URL =
