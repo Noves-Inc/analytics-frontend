@@ -6,8 +6,8 @@ export const IS_PRODUCTION =
 
 export const BASE_URLS = {
   development: `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
-  preview: "https://dev.growthepie.xyz",
-  production: `https://www.growthepie.xyz`,
+  preview: `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
+  production: `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
 };
 
 export const BASE_URL =
