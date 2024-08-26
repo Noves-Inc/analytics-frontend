@@ -682,15 +682,6 @@ export default function ComparisonChart({
   }, [embed_end_timestamp, filteredData]);
 
   const timespans = useMemo(() => {
-    // let maxDate = new Date();
-    // if (filteredData && filteredData[0].name !== "") {
-    //   maxDate = new Date(
-    //     filteredData.length > 0
-    //       ? filteredData[0].data[filteredData[0].data.length - 1][0]
-    //       : 0,
-    //   );
-    // }
-
     const buffer = 0.5 * 24 * 60 * 60 * 1000 * 2;
     const maxPlusBuffer = maxDate.valueOf() + buffer;
 
@@ -703,12 +694,6 @@ export default function ComparisonChart({
     const monthMaxPlusBuffer = firstDayOfLastMonth.valueOf() + buffer;
 
     return {
-      // "30d": {
-      //   label: "30 days",
-      //   value: 30,
-      //   xMin: Date.now() - 30 * 24 * 60 * 60 * 1000,
-      //   xMax: Date.now(),
-      // },
       "90d": {
         label: "90 days",
         shortLabel: "90d",

@@ -16,10 +16,6 @@ export default function Header() {
         <div className="flex space-x-0 xl:space-x-6 w-full">
           {/*Banner/Notification Area */}
 
-          <div className={`hidden md:flex pr-[15px] `}>
-            <Notification />
-          </div>
-
           <div className="flex justify-between items-start h-full md:hidden relative w-full">
             <Link href="/" className="">
               <div className="h-[36px] w-[154.05px] relative ">
@@ -35,7 +31,6 @@ export default function Header() {
             </Link>
 
             <div>
-              <Notification />
               <Sidebar isMobile={true} />
             </div>
           </div>

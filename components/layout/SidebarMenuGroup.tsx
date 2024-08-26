@@ -38,7 +38,7 @@ export default function SidebarMenuGroup({
 
     // const chainGroups = {};
 
-    const chainItemsByKey = navigationItems[3].options
+    /*     const chainItemsByKey = navigationItems[3].options
       .filter((option) => option.hide !== true)
       .filter(
         (option) =>
@@ -47,10 +47,10 @@ export default function SidebarMenuGroup({
       .reduce((acc, option) => {
         if (option.key) acc[option.key] = option;
         return acc;
-      }, {});
+      }, {}); */
 
     // group master.chains by bucket
-    const chainsByBucket = Object.entries(master.chains).reduce(
+    /*     const chainsByBucket = Object.entries(master.chains).reduce(
       (acc, [chainKey, chainInfo]) => {
         if (!acc[chainInfo.bucket]) {
           acc[chainInfo.bucket] = [];
@@ -62,12 +62,13 @@ export default function SidebarMenuGroup({
         return acc;
       },
       {},
-    );
+    ); */
+    const chainsByBucket = {};
 
     // sort each bucket in alphabetical order
-    Object.keys(chainsByBucket).forEach((bucket) => {
+    /*     Object.keys(chainsByBucket).forEach((bucket) => {
       chainsByBucket[bucket].sort((a, b) => a.label.localeCompare(b.label));
-    });
+    }); */
 
     return chainsByBucket;
   }, [master]);

@@ -75,14 +75,6 @@ const FundamentalsContent = ({ params }: { params: any }) => {
     ).map((chain) => chain.key);
   }, [master, metricData]);
 
-  // const pageData = navigationItems[1]?.options.find(
-  //   (item) => item.urlKey === params.metric,
-  // )?.page ?? {
-  //   title: "",
-  //   description: "",
-  //   icon: "",
-  // };
-
   const [selectedChains, setSelectedChains] = useSessionStorage(
     "fundamentalsChains",
     [...Get_DefaultChainSelectionKeys(master), CHAIN ? CHAIN : "ethereum"],
