@@ -129,7 +129,7 @@ export const navigationItems: NavigationItem[] = [
         rootKey: "throughput",
         urlKey: "throughput",
       },
-      {
+      /*       {
         label: "Stablecoin Market Cap",
         category: "value-locked",
         page: {
@@ -142,8 +142,8 @@ export const navigationItems: NavigationItem[] = [
         key: "stables_mcap",
         rootKey: "metricsStablesMcap",
         urlKey: "stablecoin-market-cap",
-      },
-      {
+      }, */
+      /*       {
         label: "Total Value Locked",
         category: "value-locked",
         page: {
@@ -157,7 +157,7 @@ export const navigationItems: NavigationItem[] = [
         key: "tvl",
         rootKey: "metricsTvl",
         urlKey: "total-value-locked",
-      },
+      }, */
 
       // // put navigation items that we want to hide in production here
       // ...(IS_PREVIEW
@@ -180,7 +180,7 @@ export const navigationItems: NavigationItem[] = [
         rootKey: "metricsFeesPaidToEthereum",
         urlKey: "fees-paid-by-users",
       },
-      {
+      /*       {
         label: "Rent Paid to L1",
         category: "economics",
         page: {
@@ -194,8 +194,8 @@ export const navigationItems: NavigationItem[] = [
         key: "rent_paid",
         rootKey: "metricsRentPaid",
         urlKey: "rent-paid",
-      },
-      {
+      }, */
+      /*       {
         label: "Onchain Profit",
         category: "economics",
         page: {
@@ -209,8 +209,8 @@ export const navigationItems: NavigationItem[] = [
         key: "profit",
         rootKey: "metricsEarnings",
         urlKey: "profit",
-      },
-      {
+      }, */
+      /*       {
         label: "Fully Diluted Valuation",
         category: "economics",
         page: {
@@ -246,8 +246,8 @@ export const navigationItems: NavigationItem[] = [
         key: "fdv",
         rootKey: "metricsFullyDilutedValuation",
         urlKey: "fully-diluted-valuation",
-      },
-      {
+      }, */
+      /*       {
         label: "Market Cap",
         category: "economics",
         page: {
@@ -285,7 +285,7 @@ export const navigationItems: NavigationItem[] = [
         key: "market_cap",
         rootKey: "marketCap",
         urlKey: "market-cap",
-      },
+      }, */
       {
         label: "Transaction Costs",
         category: "convenience",
@@ -347,7 +347,7 @@ export const navigationItems: NavigationItem[] = [
       // },
     ],
   },
-  {
+  /*   {
     name: "Blockspace",
     label: "Blockspace",
     icon: "gtp:package",
@@ -620,7 +620,7 @@ export const navigationItems: NavigationItem[] = [
         urlKey: "taiko",
       },
     ],
-  },
+  }, */
 ];
 
 export const getFundamentalsByKey = (() => {

@@ -138,7 +138,7 @@ const Error = ({
                   {navigationItems[navIndex]["options"][index]["label"]}
                 </Link>
               ))}
-            <a
+            {/*             <a
               className={`flex self-center items-center p-[15px] w-[299px] bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] ${
                 isMobile ? "h-[50px]" : "h-[54px]"
               }`}
@@ -146,8 +146,8 @@ const Error = ({
             >
               <Icon icon="gtp:book-open" className="w-[24px] h-[24px]" />
               <div className="text-[16px] leading-[150%]">Knowledge</div>
-            </a>
-            {!navIndex && (
+            </a> */}
+            {/*             {!navIndex && (
               <a
                 className={`flex self-center items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] ${
                   isMobile ? "h-[50px]" : "h-[54px]"
@@ -157,8 +157,8 @@ const Error = ({
                 <Icon icon="gtp:blog" className="w-[25px] h-[25px]" />
                 <div className="text-[16px] leading-[150%]">Blog</div>
               </a>
-            )}
-            <Link
+            )} */}
+            {/*             <Link
               className={`flex self-center items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] ${
                 isMobile ? "h-[50px]" : "h-[54px]"
               }`}
@@ -171,7 +171,7 @@ const Error = ({
                 `}
               />
               <div className="text-[16px] leading-[150%]">RPGF3 Tracker</div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

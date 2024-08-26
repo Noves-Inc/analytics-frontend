@@ -1,7 +1,6 @@
 "use client";
 import React, { Suspense } from "react";
 import useSWR from "swr";
-// import ChainComponent from "@/components/charts/ChainComponent";
 // import Link from "next/link";
 // import { Icon } from "@iconify/react";
 // import { useMediaQuery } from "usehooks-ts";

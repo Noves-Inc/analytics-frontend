@@ -1,22 +1,12 @@
-// "use client";
 import React from "react";
-// import useSWR from "swr";
-import ChainComponent from "@/components/charts/ChainComponent";
-import Link from "next/link";
-import Icon from "@/components/layout/Icon";
-// import { useMediaQuery } from "usehooks-ts";
-// import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-// import { useUIContext } from "@/contexts/UIContext";
-import { LandingURL } from "@/lib/urls";
-import { navigationItems } from "@/lib/navigation";
+import { MetricsURLs } from "@/lib/urls";
 
 import "@splidejs/splide/css";
-import { track } from "@vercel/analytics/react";
 import { MasterURL } from "@/lib/urls";
 import useSWR from "swr";
 import { MasterResponse } from "@/types/api/MasterResponse";
-
-// import ShowLoading from "./ShowLoading";
+import { MetricsResponse } from "@/types/api/MetricsResponse";
+import LandingChartItem from "../charts/LandingChartItem";
 
 export default function SwiperItem({
   metric_id,
@@ -25,50 +15,38 @@ export default function SwiperItem({
   metric_id: string;
   landing: any;
 }) {
-  // const {
-  //   data: landing,
-  //   error: landingError,
-  //   isLoading: landingLoading,
-  //   isValidating: landingValidating,
-  // } = useSWR<any>(LandingURL);
-
-  // const landing: any = await fetch(LandingURL, {
-  //   next: { revalidate: 3600 },
-  // }).then((res) => res.json());
-
-  const urlKey = navigationItems[1].options.find(
-    (item) => item.key === metric_id,
-  )?.urlKey;
-
   const { data: master, error: masterError } =
     useSWR<MasterResponse>(MasterURL);
+  const {
+    data: metricData,
+    error: metricError,
+    isLoading: metricLoading,
+    isValidating: metricValidating,
+  } = useSWR<MetricsResponse>(MetricsURLs[metric_id]);
+  console.log(metricData, metric_id, MetricsURLs[metric_id]);
 
   return (
     <>
-      {master && (
-        <ChainComponent
-          data={landing.data.all_l2s}
-          chain={"all_l2s"}
-          category={metric_id}
+      {/*       {master && metricData && (
+        <LandingChartItem
+          data={Object.keys(metricData.data.chains).map((chain) => {
+            return {
+              name: chain,
+              types: metricData.data.chains[chain]["monthly"].types,
+              data: metricData.data.chains[chain]["monthly"].data,
+            };
+          })}
+          metric_id={metricData.data.metric_id}
+          selectedTimeInterval={"max"}
+          showTimeIntervals={true}
+          sources={metricData.data.source}
+          avg={metricData.data.avg}
+          monthly_agg={metricData.data.monthly_agg}
+          showEthereumMainnet={false}
           selectedTimespan={"max"}
-          selectedScale="linear"
-          master={master}
-          xMin={landing.data.all_l2s.metrics[metric_id].daily.data[0][0]}
+          selectedScale={"absolute"}
         />
-      )}
-      <Link
-        className="flex space-x-2 items-center opacity-0 py-1.5 pl-[20px] text-xs md:text-base transition-all duration-300 -translate-y-10 group-hover:translate-y-0 group-hover:opacity-100 delay-[1000ms] group-hover:delay-[0ms] -z-10"
-        href={`/fundamentals/${urlKey}`}
-        onClick={() => {
-          track("clicked Compare link", {
-            location: `landing top chart - ${metric_id}`,
-            page: window.location.pathname,
-          });
-        }}
-      >
-        Compare{" "}
-        <Icon icon="feather:chevron-right" className="w-4 h-4 md:w-6 md:h-6" />{" "}
-      </Link>
+      )} */}
     </>
   );
 }

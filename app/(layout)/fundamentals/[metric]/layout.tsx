@@ -1,27 +1,17 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { navigationItems } from "@/lib/navigation";
-import { MetricsResponse } from "@/types/api/MetricsResponse";
 import { MetricsURLs } from "@/lib/urls";
 import { CompleteDataFeed, WithContext } from "schema-dts";
 import Container from "@/components/layout/Container";
 import Heading from "@/components/layout/Heading";
 import Subheading from "@/components/layout/Subheading";
-import Image from "next/image";
 import QuestionAnswer from "@/components/layout/QuestionAnswer";
 import { notFound } from "next/navigation";
 import { track } from "@vercel/analytics/server";
-import Link from "next/link";
 import Icon from "@/components/layout/Icon";
-import StableInsights from "@/components/layout/StableInsights";
 
 type Props = {
   params: { metric: string };
-};
-
-const unitsMap = {
-  value: "",
-  usd: "USD",
-  eth: "ETH",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -77,8 +67,6 @@ export default async function Layout({
   children: React.ReactNode;
   params: { metric: string };
 }) {
-  const url = MetricsURLs[params.metric];
-
   const pageData = navigationItems[1]?.options.find(
     (item) => item.urlKey === params.metric,
   )?.page ?? {
@@ -86,64 +74,6 @@ export default async function Layout({
     description: "",
     icon: "",
   };
-
-  let jsonLd: null | WithContext<CompleteDataFeed> = null;
-
-  // if (url) {
-  //   // fetch data from API
-  //   const res: MetricsResponse = await fetch(MetricsURLs[params.metric], {
-  //     cache: "no-store",
-  //   }).then((r) => r.json());
-
-  //   if (res && res.data && res.data.chains) {
-  //     jsonLd = {
-  //       "@context": "https://schema.org",
-  //       "@type": "CompleteDataFeed",
-  //       name: res.data.metric_name,
-  //       dateModified: new Date(
-  //         res.data.chains[Object.keys(res.data.chains)[0]].daily.data[
-  //           res.data.chains[Object.keys(res.data.chains)[0]].daily.data.length -
-  //             1
-  //         ][
-  //           res.data.chains[
-  //             Object.keys(res.data.chains)[0]
-  //           ].daily.types.indexOf("unix")
-  //         ],
-  //       ).toISOString(),
-  //       description: "growthepie",
-  //       dataFeedElement: Object.keys(res.data.chains).map((chain) => ({
-  //         "@type": "DataFeedItem",
-  //         dateModified: new Date(
-  //           res.data.chains[Object.keys(res.data.chains)[0]].daily.data[
-  //             res.data.chains[Object.keys(res.data.chains)[0]].daily.data
-  //               .length - 1
-  //           ][
-  //             res.data.chains[
-  //               Object.keys(res.data.chains)[0]
-  //             ].daily.types.indexOf("unix")
-  //           ],
-  //         ).toISOString(),
-  //         item: {
-  //           "@type": "PropertyValue",
-  //           dateModified: new Date(
-  //             res.data.chains[chain].daily.data[
-  //               res.data.chains[chain].daily.data.length - 1
-  //             ][res.data.chains[chain].daily.types.indexOf("unix")],
-  //           ).toISOString(),
-  //           name: res.data.chains[chain].chain_name,
-  //           value: `${
-  //             Math.round(
-  //               res.data.chains[chain].daily.data[
-  //                 res.data.chains[chain].daily.data.length - 1
-  //               ][1] * 100,
-  //             ) / 100
-  //           } ${unitsMap[res.data.chains[chain].daily.types[1]]}`,
-  //         },
-  //       })),
-  //     };
-  //   }
-  // }
-  /* Website Button */
 
   return (
     <>
@@ -163,31 +93,6 @@ export default async function Layout({
                   {pageData.title}
                 </Heading>
               </div>
-            </div>
-            <div className="pl-[38px] md:pl-0">
-              <Link
-                href="https://fees.growthepie.xyz/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <div
-                  className={`flex items-center justify-center p-[1px] bg-[linear-gradient(144.58deg,#FE5468_20.78%,#FFDF27_104.18%)] rounded-full  ${
-                    params.metric === "transaction-costs" ? "flex" : "hidden"
-                  }`}
-                >
-                  <div className="flex items-center pl-[5px] py-[4px] w-[205px] gap-x-[8px] font-semibold bg-forest-50 dark:bg-forest-900 rounded-full transition-all duration-300">
-                    <div className="w-[24px] h-[24px] bg-[#151A19] rounded-full flex items-center justify-center">
-                      <Icon
-                        icon="gtp:detailed-fees"
-                        className="w-[15px] h-[15px]"
-                      />
-                    </div>
-                    <div className="transition-all duration-300 whitespace-nowrap overflow-hidden text-[14px] font-semibold">
-                      Detailed Fees Overview
-                    </div>
-                  </div>
-                </div>
-              </Link>
             </div>
           </div>
         </div>
@@ -223,14 +128,6 @@ export default async function Layout({
           )}
         </Subheading>
       </Container>
-      {/* {jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
-          }}
-        />
-      )} */}
       {children}
       <Container className="flex flex-col space-y-[15px] mt-[30px]">
         <QuestionAnswer
