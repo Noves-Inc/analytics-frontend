@@ -6,7 +6,6 @@ import { MasterURL } from "@/lib/urls";
 import useSWR from "swr";
 import { MasterResponse } from "@/types/api/MasterResponse";
 import { MetricsResponse } from "@/types/api/MetricsResponse";
-import LandingChartItem from "../charts/LandingChartItem";
 
 export default function SwiperItem({
   metric_id,
