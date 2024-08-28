@@ -53,7 +53,7 @@ export default function SidebarContainer() {
           <div className="select-none h-[45.07px] mt-1 mb-[14px]">
             <div className="flex items-center ml-8 mr-2 justify-between h-[45.07px]">
               <Link href="/" className="relative h-[24px] w-[22.29px] block">
-                <div className="h-[24px] w-[22.29px] absolute left-3">
+                <div className="h-[24px] w-8 absolute left-3">
                   <Image
                     src={imagePath}
                     alt={name}

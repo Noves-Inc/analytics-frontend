@@ -6,13 +6,9 @@ import useSWR, { preload } from "swr";
 import { usePathname } from "next/navigation";
 import { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
 import { MasterURL, BlockspaceURLs, ChainURLs, MetricsURLs } from "@/lib/urls";
-import { NavigationItem, navigationItems } from "@/lib/navigation";
-import { IS_PREVIEW } from "@/lib/helpers";
+import { NavigationItem } from "@/lib/navigation";
 import { navigationCategories } from "@/lib/navigation";
-import rpgf from "@/icons/svg/rpgf.svg";
-import Image from "next/image";
 import { MasterResponse } from "@/types/api/MasterResponse";
-import { Get_SupportedChainKeys } from "@/lib/chains";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -23,6 +19,7 @@ type SidebarProps = {
   onClose?: () => void;
   children?: ReactNode;
   sidebarOpen: boolean;
+  setSidebarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function SidebarMenuGroup({
@@ -30,6 +27,7 @@ export default function SidebarMenuGroup({
   onOpen,
   onClose,
   sidebarOpen,
+  setSidebarOpen,
 }: SidebarProps) {
   const { data: master } = useSWR<MasterResponse>(MasterURL);
 
@@ -105,7 +103,17 @@ export default function SidebarMenuGroup({
     }
   }, [item.name, urlParts]);
 
+  useEffect(() => {
+    if (!sidebarOpen) {
+      setIsOpen(false);
+    }
+  }, [sidebarOpen]);
+
   const handleToggle = () => {
+    if (!sidebarOpen && setSidebarOpen) {
+      setSidebarOpen(true);
+      setIsOpen(true);
+    }
     if (isOpen) {
       handleClose();
     } else {
@@ -196,10 +204,7 @@ export default function SidebarMenuGroup({
                       className="h-7 w-7 p-0.5 mx-auto text-brandColor"
                     />
                   ) : (
-                    <Icon
-                      icon={item.icon}
-                      className="h-7 w-7 p-1 mx-auto fill-[#FF0420] text-[#FF0420]"
-                    />
+                    <Icon icon={item.icon} className="h-7 w-7 p-1 mx-auto" />
                   )}
                 </div>
               </div>
@@ -466,21 +471,23 @@ export default function SidebarMenuGroup({
                     className="h-7 w-7 p-0.5 mx-auto text-brandColor"
                   />
                 ) : (
-                  <Icon
-                    icon={item.icon}
-                    className="h-7 w-7 p-0 mx-auto fill-[#FF0420] text-[#FF0420]"
-                  />
+                  <Icon icon={item.icon} className="h-7 w-7 p-0 mx-auto" />
                 )}
               </div>
             </div>
 
-            <div
-              className={`absolute bottom-[10px] left-[23px] flex-1 flex items-center transition-all duration-300 origin-[-10px_4px]  ${
-                isOpen ? "rotate-90" : "rotate-0"
-              }`}
-            >
-              <Icon icon="gtp:chevron-right" className="w-[8px] h-[8px] mr-2" />
-            </div>
+            {sidebarOpen && (
+              <div
+                className={`absolute bottom-[10px] left-[23px] flex-1 flex items-center transition-all duration-300 origin-[-10px_4px]  ${
+                  isOpen ? "rotate-90" : "rotate-0"
+                }`}
+              >
+                <Icon
+                  icon="gtp:chevron-right"
+                  className="w-[8px] h-[8px] mr-2"
+                />
+              </div>
+            )}
             {sidebarOpen && (
               <div className={`flex-1 flex items-start justify-between`}>
                 <div className="text-base font-bold mx-3 py-0.5 whitespace-nowrap">
@@ -496,7 +503,7 @@ export default function SidebarMenuGroup({
               </div>
             )}
           </div>
-          {item.options.some((option) => option.showNew) && (
+          {/*           {item.options.some((option) => option.showNew) && (
             <div
               className={`transition-all duration-300 absolute top-0.5 bottom-0.5 right-[4px] md:right-0 text-xs flex items-center justify-center font-bold overflow-hidden pointer-events-none`}
             >
@@ -514,7 +521,7 @@ export default function SidebarMenuGroup({
                 </div>
               </div>
             </div>
-          )}
+          )} */}
         </TooltipTrigger>
         {!sidebarOpen && (
           <TooltipContent className="bg-forest-900 text-forest-50 dark:bg-forest-50 dark:text-forest-900 rounded-md p-2 text-xs ml-2 font-medium break-inside-auto shadow-md z-50">
