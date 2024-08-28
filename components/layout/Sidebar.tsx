@@ -23,8 +23,12 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ isMobile = false }: SidebarProps) {
-  const { isSidebarOpen, isMobileSidebarOpen, toggleMobileSidebar } =
-    useUIContext();
+  const {
+    isSidebarOpen,
+    isMobileSidebarOpen,
+    toggleMobileSidebar,
+    toggleSidebar,
+  } = useUIContext();
   const { name, imagePath, novesImagePath } = useHeaderInfo();
 
   const pathname = usePathname();
@@ -262,7 +266,7 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
         isSidebarOpen ? "w-[18rem]" : ""
       }`}
       animate={{
-        width: isSidebarOpen ? "18rem" : "5.5rem",
+        width: isSidebarOpen ? "18rem" : "6.5rem",
       }}
       transition={{
         duration: 0.3,
@@ -274,6 +278,7 @@ export default function Sidebar({ isMobile = false }: SidebarProps) {
             key={item.name + "_item"}
             item={item}
             sidebarOpen={isSidebarOpen}
+            setSidebarOpen={toggleSidebar}
           />
         ))}
       </div>
