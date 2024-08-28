@@ -10,7 +10,6 @@ import { useHeaderInfo } from "@/hooks/useHeaderInfo";
 
 export default function Header() {
   const { name, imagePath } = useHeaderInfo();
-  console.log(imagePath);
   return (
     <header className="flex justify-between space-x-0 xl:space-x-6 items-start max-w-[1600px] w-full mx-auto px-[20px] pt-[20px] md:px-[50px] md:pt-[52px]">
       <div className="flex justify-between items-center w-full">
