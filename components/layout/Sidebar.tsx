@@ -11,7 +11,6 @@ import EthUsdSwitch from "./EthUsdSwitch";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import Backgrounds from "./Backgrounds";
-import rpgf from "@/icons/svg/rpgf.svg";
 import { useTheme } from "next-themes";
 import { track } from "@vercel/analytics";
 import { useHeaderInfo } from "@/hooks/useHeaderInfo";

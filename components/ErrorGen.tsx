@@ -75,7 +75,7 @@ const Error = ({
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full mt-[85px] md:mt-[125px] -mb-[100px] gap-y-[15px]">
+      <div className="flex flex-col items-center justify-center w-full mt-[85px] md:my-[125px] -mb-[100px] gap-y-[15px]">
         <div
           className={`flex flex-col bg-[#1F2726] border-forest-400 rounded-[40px] p-[30px] gap-y-[15px] 
           ${navIndex === 1 || navIndex === 3 ? "h-[579px]" : "h-[519px]"} ${
@@ -93,9 +93,9 @@ const Error = ({
             </div>
           </div>
           <div className="text-[15px] leading-[150%]">{subheader}</div>
-          <div className="flex flex-col gap-y-[5px]">
+          <div className="flex items-center flex-col gap-y-[18px]">
             <Link
-              className={`flex self-center items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px]
+              className={`flex items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px]
               ${isMobile ? "h-[50px]" : "h-[54px]"}`}
               href={`/`}
             >
@@ -104,7 +104,7 @@ const Error = ({
             </Link>
             {randIndices && navIndex && (
               <Link
-                className={`flex self-center items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] hover:cursor-pointer ${
+                className={`flex items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] hover:cursor-pointer ${
                   isMobile ? "h-[50px]" : "h-[54px]"
                 }`}
                 href={`/${pageGroup}/${
@@ -126,7 +126,7 @@ const Error = ({
               randIndices.map((index) => (
                 <Link
                   key={index}
-                  className={`flex self-center items-center p-[15px] w-[250px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] ${
+                  className={`flex items-center p-[15px] w-[299px]  bg-[#1F2726] hover:bg-[#5A6462] border-[3px] border-[#5A6462] rounded-full gap-x-[10px] ${
                     isMobile ? "h-[50px]" : "h-[54px]"
                   }`}
                   href={`/${pageGroup}/${navigationItems[navIndex]["options"][index]["urlKey"]}`}
