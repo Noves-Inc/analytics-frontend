@@ -50,7 +50,10 @@ export function Providers({ children, forcedTheme }: ProvidersProps) {
               .then((r) => r.json())
               .catch((e) => new Error(e)),
           use: apiRoot === "dev" && !IS_PRODUCTION ? [devMiddleware] : [],
-          refreshInterval: 1000 * 60 * 60, // 1 hour
+          refreshInterval: 1000 * 60 * 60 * 144, // 6 days
+          revalidateIfStale: false,
+          revalidateOnFocus: false,
+          revalidateOnReconnect: false,
         }}
       >
         <UIContextProvider>{children}</UIContextProvider>
