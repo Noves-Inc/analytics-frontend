@@ -27,7 +27,7 @@ export default function Page() {
           Your Gateway to Curated Analytics and Knowledge
         </Subheading>
       </Container>
-      <Container className="flex flex-wrap flex-1 w-full gap-y-8 justify-evenly mt-24 mb-36">
+      <Container className="flex flex-wrap flex-1 w-4/5 gap-y-8 mt-24 mb-36 mx-auto justify-evenly">
         <div
           className="flex flex-col p-4 items-center rounded-sm dark:bg-[#1F2726] bg-forest-50 cursor-pointer border border-transparent hover:border-brandColor"
           onClick={() => {

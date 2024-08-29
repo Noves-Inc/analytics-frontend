@@ -2,10 +2,8 @@
 import { useMemo, useState, useEffect } from "react";
 import Error from "next/error";
 import { MetricsResponse } from "@/types/api/MetricsResponse";
-import Heading from "@/components/layout/Heading";
-import Subheading from "@/components/layout/Subheading";
 import ComparisonChart from "@/components/layout/ComparisonChart";
-import { useLocalStorage, useSessionStorage } from "usehooks-ts";
+import { useSessionStorage } from "usehooks-ts";
 import useSWR from "swr";
 import MetricsTable from "@/components/layout/MetricsTable";
 import { MetricsURLs } from "@/lib/urls";
@@ -15,12 +13,7 @@ import {
   Get_SupportedChainKeys,
 } from "@/lib/chains";
 import { intersection } from "lodash";
-import { Icon } from "@iconify/react";
-import QuestionAnswer from "@/components/layout/QuestionAnswer";
-import { navigationItems } from "@/lib/navigation";
-import Container from "@/components/layout/Container";
 import ShowLoading from "@/components/layout/ShowLoading";
-import Image from "next/image";
 import { MasterURL } from "@/lib/urls";
 import { MasterResponse } from "@/types/api/MasterResponse";
 
@@ -46,7 +39,14 @@ const Fundamentals = ({ params }: { params: any }) => {
         dataValidating={[masterValidating, metricValidating]}
       />
       {master && metricData ? (
-        <FundamentalsContent params={{ ...params, master, metricData }} />
+        <FundamentalsContent
+          params={{
+            ...params,
+            master,
+            metricData,
+            errorCode: metricError?.statusCode || masterError?.statusCode,
+          }}
+        />
       ) : (
         <div className="w-full min-h-[1024px] md:min-h-[1081px] lg:min-h-[637px] xl:min-h-[736px]" />
       )}

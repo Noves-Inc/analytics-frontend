@@ -71,7 +71,7 @@ export default function SidebarMenuGroup({
     return chainsByBucket;
   }, [master]);
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const pathname = usePathname();
 
@@ -104,9 +104,7 @@ export default function SidebarMenuGroup({
   }, [item.name, urlParts]);
 
   useEffect(() => {
-    if (!sidebarOpen) {
-      setIsOpen(false);
-    }
+    setIsOpen(sidebarOpen);
   }, [sidebarOpen]);
 
   const handleToggle = () => {
